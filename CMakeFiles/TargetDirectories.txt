@@ -1,0 +1,3 @@
+/home/sadegh/tank/CMakeFiles/rebuild_cache.dir
+/home/sadegh/tank/CMakeFiles/tank.dir
+/home/sadegh/tank/CMakeFiles/edit_cache.dir

@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/tank.dir/src/tank.c.o  -o tank -lm -lSDL2 -lSDL2_gfx 
