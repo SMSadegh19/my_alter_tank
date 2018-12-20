@@ -6,13 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/sadegh/tank/src/physics.c
-physics.h
-/home/sadegh/tank/src/physics.h
+/home/sadegh/tank/src/logic.h
 structs.h
 /home/sadegh/tank/src/structs.h
-math.h
--
 
 /home/sadegh/tank/src/physics.h
 structs.h
@@ -21,6 +17,28 @@ view.h
 /home/sadegh/tank/src/view.h
 
 /home/sadegh/tank/src/structs.h
+
+/home/sadegh/tank/src/view.c
+view.h
+/home/sadegh/tank/src/view.h
+structs.h
+/home/sadegh/tank/src/structs.h
+logic.h
+/home/sadegh/tank/src/logic.h
+physics.h
+/home/sadegh/tank/src/physics.h
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+SDL2/SDL.h
+-
+SDL2/SDL2_gfxPrimitives.h
+-
+time.h
+-
 
 /home/sadegh/tank/src/view.h
 structs.h

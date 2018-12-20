@@ -21,7 +21,8 @@ void draw_shapes(Map *map);
 void draw_tank(Tank *tank);
 void draw_tank_gun(Tank *tank);
 void draw_bullet(Bullet *bullet);
-void draw_walls(Wall *walls);
+void draw_walls(Map *map);
+void draw_wall(Wall *wall);
 int event_handling(Map *map);
 
 #endif //TANK_VIEW_H
