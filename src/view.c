@@ -4,13 +4,17 @@
 
 #include "view.h"
 #include "structs.h"
+#include "logic.h"
+#include "physics.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
+#include <time.h>
 
 const double pi = 3.141592;
+int EXIT = 10000;
 
 SDL_Window *window;
 SDL_Renderer *renderer;
@@ -19,6 +23,7 @@ int x_max = 1000;
 int y_max = 550;
 
 void initialize_game_values(Map *map) {
+    srand(time(NULL));
     for (int i = 0; i < 3; ++i) {
         map->tank[i].x = rand() % x_max;
         map->tank[i].y = rand() % y_max;
@@ -34,6 +39,9 @@ void initialize_game_values(Map *map) {
         }
         for (int k = 0; k < 6; ++k) {
             map->tank[i].bullet[k].is_fired = 0;
+        }
+        for (int r = 0; r < 4; ++r) {
+            map->tank[i].key_pressed[r] = 0;
         }
     }
 }
@@ -64,7 +72,9 @@ void quit_window() {
 
 void draw_shapes(Map *map) {
     for (int i = 0; i < 3; ++i) {
-        draw_tank(&(map->tank[i]));
+        if (map->tank[i].is_alive) {
+            draw_tank(&(map->tank[i]));
+        }
     }
 }
 
@@ -77,4 +87,49 @@ void draw_tank_gun(Tank *tank) {
     int x_gun = tank->x + (int) ((tank_radius + 3) * cos(tank->angle));
     int y_gun = tank->y + (int) ((tank_radius + 3) * sin(tank->angle));
     filledCircleRGBA(renderer, x_gun, y_gun, 5, 90, 90, 90, 255);
+}
+
+int event_handling(Map *map) {
+    SDL_Event event;
+
+    while(SDL_PollEvent(&event)) {
+        if (event.type == SDL_QUIT)
+            return EXIT;
+        if (event.type == SDL_KEYDOWN) {
+            switch (event.key.keysym.sym) {
+                case SDLK_DOWN:
+                    map->tank[0].key_pressed[0] = 1;
+                    break;
+                case SDLK_UP:
+                    map->tank[0].key_pressed[1] = 1;
+                    break;
+                case SDLK_RIGHT:
+                    map->tank[0].key_pressed[2] = 1;
+                    break;
+                case SDLK_LEFT:
+                    map->tank[0].key_pressed[3] = 1;
+                    break;
+            }
+        } else if(event.type == SDL_KEYUP) {
+            switch (event.key.keysym.sym) {
+                case SDLK_DOWN:
+                    map->tank[0].key_pressed[0] = 0;
+                    break;
+                case SDLK_UP:
+                    map->tank[0].key_pressed[1] = 0;
+                    break;
+                case SDLK_RIGHT:
+                    map->tank[0].key_pressed[2] = 0;
+                    break;
+                case SDLK_LEFT:
+                    map->tank[0].key_pressed[3] = 0;
+                    break;
+                case SDLK_m:
+                    fire(&(map->tank[0]));
+                    break;
+            }
+        }
+    }
+    move_tank(map);
+    turn_tank(map);
 }

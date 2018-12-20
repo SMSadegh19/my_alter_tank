@@ -19,6 +19,7 @@ typedef struct {
     int color[3];
     double angle;
     int is_alive;
+    int key_pressed[4];//0 : backward //1 : forward //2 : right_turn //3 : left_turn
     Bullet bullet[6];
 } Tank;
 

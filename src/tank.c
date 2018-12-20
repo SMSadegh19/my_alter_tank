@@ -15,12 +15,14 @@
 Map game_map;
 
 int main() {
+    printf("%d", SDLK_LEFT);
     initialize_game_values(&game_map);
     init_window();
     int s_continue = 1;//to realize should continue or no??
     while(s_continue) {
         render_clear();
         draw_shapes(&game_map);
+        if (event_handling(&game_map) == EXIT) break;
         present_window();
     }
     quit_window();

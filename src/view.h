@@ -9,6 +9,9 @@
 #ifndef TANK_VIEW_H
 #define TANK_VIEW_H
 
+extern int EXIT;
+extern int tank_radius;
+
 void initialize_game_values(Map *map);
 void init_window();
 void render_clear();
@@ -19,6 +22,6 @@ void draw_tank(Tank *tank);
 void draw_tank_gun(Tank *tank);
 void draw_bullet(Bullet *bullet);
 void draw_walls(Wall *walls);
-void handle_events(Map *map);
+int event_handling(Map *map);
 
 #endif //TANK_VIEW_H

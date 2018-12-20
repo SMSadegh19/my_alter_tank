@@ -3,12 +3,15 @@
 //
 
 #include "structs.h"
+#include "view.h"
 
 #ifndef TANK_PHYSICS_H
 #define TANK_PHYSICS_H
 
-void move_tank(Tank *tank);
-void turn_tank(Tank *tank);
+void move_tank(Map *map);
+void go_forward(Tank *tank);
+void go_backward(Tank *tank);
+void turn_tank(Map *map);
 void fire(Tank *tank);
 void move_bullet(Bullet *bullet);
 
