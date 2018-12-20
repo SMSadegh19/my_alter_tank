@@ -11,6 +11,7 @@ CMakeFiles/tank.dir/src/physics.c.o
  /home/sadegh/tank/src/physics.c
  /home/sadegh/tank/src/physics.h
  /home/sadegh/tank/src/structs.h
+ /home/sadegh/tank/src/view.h
 CMakeFiles/tank.dir/src/tank.c.o
  /home/sadegh/tank/src/logic.h
  /home/sadegh/tank/src/physics.h
@@ -18,6 +19,8 @@ CMakeFiles/tank.dir/src/tank.c.o
  /home/sadegh/tank/src/tank.c
  /home/sadegh/tank/src/view.h
 CMakeFiles/tank.dir/src/view.c.o
+ /home/sadegh/tank/src/logic.h
+ /home/sadegh/tank/src/physics.h
  /home/sadegh/tank/src/structs.h
  /home/sadegh/tank/src/view.c
  /home/sadegh/tank/src/view.h

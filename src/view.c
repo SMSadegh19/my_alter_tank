@@ -75,12 +75,21 @@ void draw_shapes(Map *map) {
         if (map->tank[i].is_alive) {
             draw_tank(&(map->tank[i]));
         }
+        for (int j = 0; j < 6; ++j) {
+            if (map->tank[i].bullet[j].is_fired) {
+                draw_bullet(&(map->tank[i].bullet[j]));
+            }
+        }
     }
 }
 
 void draw_tank(Tank *tank) {
     filledCircleRGBA(renderer, tank->x, tank->y, tank_radius, tank->color[0], tank->color[1], tank->color[2], 255);
     draw_tank_gun(tank);
+}
+
+void draw_bullet(Bullet *bullet) {
+    filledCircleRGBA(renderer, bullet->x, bullet->y, 5, 20, 20, 20, 255);
 }
 
 void draw_tank_gun(Tank *tank) {
