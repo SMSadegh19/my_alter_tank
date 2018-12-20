@@ -10,6 +10,7 @@ typedef struct {
     int y;
     double angle;
     int is_fired;
+    int remained_life;//first 100
 } Bullet;
 
 typedef struct {

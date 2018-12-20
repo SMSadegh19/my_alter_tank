@@ -89,7 +89,7 @@ void draw_tank(Tank *tank) {
 }
 
 void draw_bullet(Bullet *bullet) {
-    filledCircleRGBA(renderer, bullet->x, bullet->y, 5, 20, 20, 20, 255);
+    filledCircleRGBA(renderer, bullet->x, bullet->y, 3, 20, 20, 20, 255);
 }
 
 void draw_tank_gun(Tank *tank) {

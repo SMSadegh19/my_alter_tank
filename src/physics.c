@@ -39,5 +39,15 @@ void turn_tank(Map *map) {
 }
 
 void fire(Tank *tank) {
-
+    for (int i = 0; i < 6; ++i) {
+        if (tank->bullet[i].is_fired == 0){
+            //initializing bullet
+            tank->bullet[i].remained_life = 100;
+            tank->bullet[i].x = tank->x;
+            tank->bullet[i].y = tank->y;
+            tank->bullet[i].angle = tank->angle;
+            tank->bullet[i].is_fired = 1;
+            break;
+        }
+    }
 }
