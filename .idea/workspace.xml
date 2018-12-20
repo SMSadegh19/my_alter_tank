@@ -12,11 +12,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16a4a011-d161-4100-8340-fc3cd78f6eb8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/tank.dir/src/view.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/tank.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/tank.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/tank.dir/src/physics.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/tank.dir/src/physics.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/tank.dir/src/view.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/view.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/physics.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/physics.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/view.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tank" beforeDir="false" afterPath="$PROJECT_DIR$/tank" afterDir="false" />
     </list>
@@ -51,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="203" column="1" lean-forward="true" selection-start-line="203" selection-start-column="1" selection-end-line="203" selection-end-column="1" />
+            <state relative-caret-position="665">
+              <caret line="72" column="28" selection-start-line="72" selection-start-column="28" selection-end-line="72" selection-end-column="28" />
               <folding>
                 <element signature="e#41#58#0" expanded="true" />
                 <element signature="e#176#566#0" />
@@ -70,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+            <state relative-caret-position="369">
+              <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
               <folding>
                 <element signature="e#41#61#0" expanded="true" />
               </folding>
@@ -100,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/physics.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-259">
-              <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+            <state relative-caret-position="186">
+              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
               <folding>
                 <element signature="e#41#61#0" expanded="true" />
               </folding>
@@ -115,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/physics.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="32" />
+            <state relative-caret-position="285">
+              <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
               <folding>
                 <element signature="e#41#61#0" expanded="true" />
               </folding>
@@ -127,7 +127,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/structs.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
+            <state relative-caret-position="-228">
               <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
             </state>
           </provider>
@@ -155,9 +155,9 @@
         <option value="$PROJECT_DIR$/src/structs.h" />
         <option value="$PROJECT_DIR$/src/physics.h" />
         <option value="$PROJECT_DIR$/src/tank.c" />
-        <option value="$PROJECT_DIR$/src/physics.c" />
-        <option value="$PROJECT_DIR$/src/view.h" />
         <option value="$PROJECT_DIR$/src/view.c" />
+        <option value="$PROJECT_DIR$/src/view.h" />
+        <option value="$PROJECT_DIR$/src/physics.c" />
       </list>
     </option>
   </component>
@@ -234,7 +234,7 @@
       <workItem from="1545226010508" duration="23000" />
       <workItem from="1545226068658" duration="1772000" />
       <workItem from="1545237318834" duration="6769000" />
-      <workItem from="1545294039316" duration="26533000" />
+      <workItem from="1545294039316" duration="27454000" />
     </task>
     <task id="LOCAL-00001" summary="I wrote some function names">
       <created>1545303134244</created>
@@ -292,11 +292,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545327238679</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="I set object moving for two other tank by numpad(58640) and DEFSQ">
+      <created>1545334295984</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1545334295984</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42331000" />
+    <option name="totallyTimeSpent" value="43252000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -393,7 +400,8 @@
     <MESSAGE value="I added Func -fire- planting bullet" />
     <MESSAGE value="I added Funcs 'bullet_moving' and 'move_bullet'" />
     <MESSAGE value="I set life_duration for each bullet" />
-    <option name="LAST_COMMIT_MESSAGE" value="I set life_duration for each bullet" />
+    <MESSAGE value="I set object moving for two other tank by numpad(58640) and DEFSQ" />
+    <option name="LAST_COMMIT_MESSAGE" value="I set object moving for two other tank by numpad(58640) and DEFSQ" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/view.h" />
@@ -405,46 +413,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/structs.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/physics.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="32" />
-          <folding>
-            <element signature="e#41#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/physics.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-259">
-          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
-          <folding>
-            <element signature="e#41#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tank.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
           <folding>
             <element signature="e#41#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+          <folding>
+            <element signature="e#41#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -459,10 +443,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view.h">
+    <entry file="file://$PROJECT_DIR$/src/structs.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+        <state relative-caret-position="-228">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/physics.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
           <folding>
             <element signature="e#41#61#0" expanded="true" />
           </folding>
@@ -471,14 +462,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="203" column="1" lean-forward="true" selection-start-line="203" selection-start-column="1" selection-end-line="203" selection-end-column="1" />
+        <state relative-caret-position="665">
+          <caret line="72" column="28" selection-start-line="72" selection-start-column="28" selection-end-line="72" selection-end-column="28" />
           <folding>
             <element signature="e#41#58#0" expanded="true" />
             <element signature="e#176#566#0" />
             <element signature="e#568#708#0" />
             <element signature="e#710#763#0" />
             <element signature="e#763#790#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/physics.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+          <folding>
+            <element signature="e#41#61#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -37,13 +37,13 @@ void move_tank(Map *map) {
 }
 
 void go_forward(Tank *tank) {
-    tank->x += (int)(cos(tank->angle) * 10);
-    tank->y += (int)(sin(tank->angle) * 10);
+    tank->x += (int)(cos(tank->angle) * 8);
+    tank->y += (int)(sin(tank->angle) * 8);
 }
 
 void go_backward(Tank *tank) {
-    tank->x -= (int)(cos(tank->angle) * 10);
-    tank->y -= (int)(sin(tank->angle) * 10);
+    tank->x -= (int)(cos(tank->angle) * 5);
+    tank->y -= (int)(sin(tank->angle) * 5);
 }
 
 void turn_tank(Map *map) {
@@ -62,8 +62,8 @@ void fire(Tank *tank) {
         if (tank->bullet[i].is_fired == 0) {
             //initializing bullet
             tank->bullet[i].remained_life = 100;
-            tank->bullet[i].x = tank->x;
-            tank->bullet[i].y = tank->y;
+            tank->bullet[i].x = tank->x + (int) ((tank_radius + 3) * cos(tank->angle));
+            tank->bullet[i].y = tank->y + (int) ((tank_radius + 3) * sin(tank->angle));
             tank->bullet[i].angle = tank->angle;
             tank->bullet[i].is_fired = 1;
             break;
