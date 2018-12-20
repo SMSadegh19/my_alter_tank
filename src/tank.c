@@ -14,16 +14,13 @@
 
 Map game_map;
 
-
 int main() {
     initialize_game_values(&game_map);
     init_window();
     int s_continue = 1;//to realize should continue or no??
     while(s_continue) {
         render_clear();
-//      start of drawing
         draw_shapes(&game_map);
-//      end of drawing
         present_window();
     }
     quit_window();

@@ -16,6 +16,7 @@ void present_window();
 void quit_window();
 void draw_shapes(Map *map);
 void draw_tank(Tank *tank);
+void draw_tank_gun(Tank *tank);
 void draw_bullet(Bullet *bullet);
 void draw_walls(Wall *walls);
 void handle_events(Map *map);

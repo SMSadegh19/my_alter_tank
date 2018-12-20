@@ -9,6 +9,7 @@
 #include <math.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
+
 const double pi = 3.141592;
 
 SDL_Window *window;
@@ -26,9 +27,9 @@ void initialize_game_values(Map *map) {
         map->tank[i].score = 0;
         for (int j = 0; j < 3; ++j) {
             if (i != j) {
-                map->tank[i].color[j] = 0;
+                map->tank[i].color[j] = 50;
             } else {
-                map->tank[i].color[j] = 180;
+                map->tank[i].color[j] = 255;
             }
         }
         for (int k = 0; k < 6; ++k) {
@@ -69,5 +70,11 @@ void draw_shapes(Map *map) {
 
 void draw_tank(Tank *tank) {
     filledCircleRGBA(renderer, tank->x, tank->y, tank_radius, tank->color[0], tank->color[1], tank->color[2], 255);
+    draw_tank_gun(tank);
 }
 
+void draw_tank_gun(Tank *tank) {
+    int x_gun = tank->x + (int) ((tank_radius + 3) * cos(tank->angle));
+    int y_gun = tank->y + (int) ((tank_radius + 3) * sin(tank->angle));
+    filledCircleRGBA(renderer, x_gun, y_gun, 5, 90, 90, 90, 255);
+}

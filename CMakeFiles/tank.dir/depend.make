@@ -3,12 +3,15 @@
 
 CMakeFiles/tank.dir/src/logic.c.o: src/logic.c
 CMakeFiles/tank.dir/src/logic.c.o: src/logic.h
+CMakeFiles/tank.dir/src/logic.c.o: src/physics.h
 CMakeFiles/tank.dir/src/logic.c.o: src/structs.h
+CMakeFiles/tank.dir/src/logic.c.o: src/view.h
 
 CMakeFiles/tank.dir/src/physics.c.o: src/physics.c
 CMakeFiles/tank.dir/src/physics.c.o: src/physics.h
 CMakeFiles/tank.dir/src/physics.c.o: src/structs.h
 
+CMakeFiles/tank.dir/src/tank.c.o: src/logic.h
 CMakeFiles/tank.dir/src/tank.c.o: src/physics.h
 CMakeFiles/tank.dir/src/tank.c.o: src/structs.h
 CMakeFiles/tank.dir/src/tank.c.o: src/tank.c
