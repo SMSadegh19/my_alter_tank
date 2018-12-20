@@ -22,6 +22,7 @@ int main() {
     while(s_continue) {
         render_clear();
         draw_shapes(&game_map);
+        bullets_moving(&game_map);
         if (event_handling(&game_map) == EXIT) break;
         present_window();
     }

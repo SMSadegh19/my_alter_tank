@@ -6,6 +6,21 @@
 #include "structs.h"
 #include <math.h>
 
+void bullets_moving(Map *map) {
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 6; ++j) {
+            if (map->tank[i].bullet[j].is_fired) {
+                move_bullet(&(map->tank[i].bullet[j]));
+            }
+        }
+    }
+}
+
+void move_bullet(Bullet *bullet) {
+    bullet->x += (int)(cos(bullet->angle) * 10);
+    bullet->y += (int)(sin(bullet->angle) * 10);
+}
+
 void move_tank(Map *map) {
     for (int i = 0; i < 3; ++i) {
         if (map->tank[i].key_pressed[0]) {
@@ -40,7 +55,7 @@ void turn_tank(Map *map) {
 
 void fire(Tank *tank) {
     for (int i = 0; i < 6; ++i) {
-        if (tank->bullet[i].is_fired == 0){
+        if (tank->bullet[i].is_fired == 0) {
             //initializing bullet
             tank->bullet[i].remained_life = 100;
             tank->bullet[i].x = tank->x;
