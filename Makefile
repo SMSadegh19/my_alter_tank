@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/56/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/57/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/56/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/57/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/sadegh/tank
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/56/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/57/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/56/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/57/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -123,6 +123,60 @@ tank/fast:
 	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/build
 .PHONY : tank/fast
 
+src/logic.o: src/logic.c.o
+
+.PHONY : src/logic.o
+
+# target to build an object file
+src/logic.c.o:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/logic.c.o
+.PHONY : src/logic.c.o
+
+src/logic.i: src/logic.c.i
+
+.PHONY : src/logic.i
+
+# target to preprocess a source file
+src/logic.c.i:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/logic.c.i
+.PHONY : src/logic.c.i
+
+src/logic.s: src/logic.c.s
+
+.PHONY : src/logic.s
+
+# target to generate assembly for a file
+src/logic.c.s:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/logic.c.s
+.PHONY : src/logic.c.s
+
+src/physics.o: src/physics.c.o
+
+.PHONY : src/physics.o
+
+# target to build an object file
+src/physics.c.o:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/physics.c.o
+.PHONY : src/physics.c.o
+
+src/physics.i: src/physics.c.i
+
+.PHONY : src/physics.i
+
+# target to preprocess a source file
+src/physics.c.i:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/physics.c.i
+.PHONY : src/physics.c.i
+
+src/physics.s: src/physics.c.s
+
+.PHONY : src/physics.s
+
+# target to generate assembly for a file
+src/physics.c.s:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/physics.c.s
+.PHONY : src/physics.c.s
+
 src/tank.o: src/tank.c.o
 
 .PHONY : src/tank.o
@@ -150,6 +204,33 @@ src/tank.c.s:
 	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/tank.c.s
 .PHONY : src/tank.c.s
 
+src/view.o: src/view.c.o
+
+.PHONY : src/view.o
+
+# target to build an object file
+src/view.c.o:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/view.c.o
+.PHONY : src/view.c.o
+
+src/view.i: src/view.c.i
+
+.PHONY : src/view.i
+
+# target to preprocess a source file
+src/view.c.i:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/view.c.i
+.PHONY : src/view.c.i
+
+src/view.s: src/view.c.s
+
+.PHONY : src/view.s
+
+# target to generate assembly for a file
+src/view.c.s:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/view.c.s
+.PHONY : src/view.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -159,9 +240,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... tank"
 	@echo "... edit_cache"
+	@echo "... src/logic.o"
+	@echo "... src/logic.i"
+	@echo "... src/logic.s"
+	@echo "... src/physics.o"
+	@echo "... src/physics.i"
+	@echo "... src/physics.s"
 	@echo "... src/tank.o"
 	@echo "... src/tank.i"
 	@echo "... src/tank.s"
+	@echo "... src/view.o"
+	@echo "... src/view.i"
+	@echo "... src/view.s"
 .PHONY : help
 
 

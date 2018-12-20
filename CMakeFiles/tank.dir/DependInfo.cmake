@@ -4,7 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/home/sadegh/tank/src/logic.c" "/home/sadegh/tank/CMakeFiles/tank.dir/src/logic.c.o"
+  "/home/sadegh/tank/src/physics.c" "/home/sadegh/tank/CMakeFiles/tank.dir/src/physics.c.o"
   "/home/sadegh/tank/src/tank.c" "/home/sadegh/tank/CMakeFiles/tank.dir/src/tank.c.o"
+  "/home/sadegh/tank/src/view.c" "/home/sadegh/tank/CMakeFiles/tank.dir/src/view.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

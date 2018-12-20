@@ -70,10 +70,28 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/sadegh/tank/src/logic.c">
+			<Option target="tank"/>
+		</Unit>
+		<Unit filename="/home/sadegh/tank/src/logic.h">
+			<Option target="tank"/>
+		</Unit>
+		<Unit filename="/home/sadegh/tank/src/physics.c">
+			<Option target="tank"/>
+		</Unit>
+		<Unit filename="/home/sadegh/tank/src/physics.h">
+			<Option target="tank"/>
+		</Unit>
+		<Unit filename="/home/sadegh/tank/src/structs.h">
+			<Option target="tank"/>
+		</Unit>
 		<Unit filename="/home/sadegh/tank/src/tank.c">
 			<Option target="tank"/>
 		</Unit>
-		<Unit filename="/home/sadegh/tank/src/testhead.h">
+		<Unit filename="/home/sadegh/tank/src/view.c">
+			<Option target="tank"/>
+		</Unit>
+		<Unit filename="/home/sadegh/tank/src/view.h">
 			<Option target="tank"/>
 		</Unit>
 		<Unit filename="/home/sadegh/tank/CMakeLists.txt">
