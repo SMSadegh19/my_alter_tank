@@ -23,5 +23,8 @@ void draw_tank_gun(Tank *tank);
 void draw_bullet(Bullet *bullet);
 void draw_walls(Wall *walls);
 int event_handling(Map *map);
+void set_key_tank0(Uint32 type, SDL_Keycode code, Map *map);
+void set_key_tank1(Uint32 type, SDL_Keycode code, Map *map);
+void set_key_tank2(Uint32 type, SDL_Keycode code, Map *map);
 
 #endif //TANK_VIEW_H

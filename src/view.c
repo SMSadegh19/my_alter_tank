@@ -18,7 +18,7 @@ int EXIT = 10000;
 
 SDL_Window *window;
 SDL_Renderer *renderer;
-int tank_radius = 30;
+int tank_radius = 22;
 int x_max = 1000;
 int y_max = 550;
 
@@ -106,6 +106,7 @@ int event_handling(Map *map) {
             return EXIT;
         if (event.type == SDL_KEYDOWN) {
             switch (event.key.keysym.sym) {
+                //tank0
                 case SDLK_DOWN:
                     map->tank[0].key_pressed[0] = 1;
                     break;
@@ -118,9 +119,36 @@ int event_handling(Map *map) {
                 case SDLK_LEFT:
                     map->tank[0].key_pressed[3] = 1;
                     break;
+                //tank1
+                case SDLK_d:
+                    map->tank[1].key_pressed[0] = 1;
+                    break;
+                case SDLK_e:
+                    map->tank[1].key_pressed[1] = 1;
+                    break;
+                case SDLK_f:
+                    map->tank[1].key_pressed[2] = 1;
+                    break;
+                case SDLK_s:
+                    map->tank[1].key_pressed[3] = 1;
+                    break;
+                //tank2
+                case SDLK_KP_5:
+                    map->tank[2].key_pressed[0] = 1;
+                    break;
+                case SDLK_KP_8:
+                    map->tank[2].key_pressed[1] = 1;
+                    break;
+                case SDLK_KP_6:
+                    map->tank[2].key_pressed[2] = 1;
+                    break;
+                case SDLK_KP_4:
+                    map->tank[2].key_pressed[3] = 1;
+                    break;
             }
-        } else if(event.type == SDL_KEYUP) {
+        } else if (event.type == SDL_KEYUP) {
             switch (event.key.keysym.sym) {
+                //tank0
                 case SDLK_DOWN:
                     map->tank[0].key_pressed[0] = 0;
                     break;
@@ -135,6 +163,38 @@ int event_handling(Map *map) {
                     break;
                 case SDLK_m:
                     fire(&(map->tank[0]));
+                    break;
+                //tank1
+                case SDLK_d:
+                    map->tank[1].key_pressed[0] = 0;
+                    break;
+                case SDLK_e:
+                    map->tank[1].key_pressed[1] = 0;
+                    break;
+                case SDLK_f:
+                    map->tank[1].key_pressed[2] = 0;
+                    break;
+                case SDLK_s:
+                    map->tank[1].key_pressed[3] = 0;
+                    break;
+                case SDLK_q:
+                    fire(&(map->tank[1]));
+                    break;
+                //tank2
+                case SDLK_KP_5:
+                    map->tank[2].key_pressed[0] = 0;
+                    break;
+                case SDLK_KP_8:
+                    map->tank[2].key_pressed[1] = 0;
+                    break;
+                case SDLK_KP_6:
+                    map->tank[2].key_pressed[2] = 0;
+                    break;
+                case SDLK_KP_4:
+                    map->tank[2].key_pressed[3] = 0;
+                    break;
+                case SDLK_KP_0:
+                    fire(&(map->tank[2]));
                     break;
             }
         }
