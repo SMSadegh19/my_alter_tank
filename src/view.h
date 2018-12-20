@@ -9,10 +9,12 @@
 #ifndef TANK_VIEW_H
 #define TANK_VIEW_H
 
+void initialize_game_values(Map *map);
 void init_window();
 void render_clear();
 void present_window();
 void quit_window();
+void draw_shapes(Map *map);
 void draw_tank(Tank *tank);
 void draw_bullet(Bullet *bullet);
 void draw_walls(Wall *walls);

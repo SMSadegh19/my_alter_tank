@@ -19,7 +19,7 @@ typedef struct {
     int color[3];
     double angle;
     int is_alive;
-    Bullet *bullets[5];
+    Bullet bullet[6];
 } Tank;
 
 typedef struct {
@@ -30,7 +30,7 @@ typedef struct {
 } Wall;
 
 typedef struct {
-    Tank *tanks;
+    Tank tank[3];
     Wall *walls;
 } Map;
 

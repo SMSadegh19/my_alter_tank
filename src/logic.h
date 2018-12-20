@@ -7,6 +7,7 @@
 #ifndef TANK_LOGIC_H
 #define TANK_LOGIC_H
 
+
 int tank_movement_collid(Tank *tank, Map *map);
 int bullet_collid(Bullet *bullet, Map *map);
 
