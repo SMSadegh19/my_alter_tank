@@ -19,6 +19,10 @@ void bullets_moving(Map *map) {
 void move_bullet(Bullet *bullet) {
     bullet->x += (int)(cos(bullet->angle) * 10);
     bullet->y += (int)(sin(bullet->angle) * 10);
+    bullet->remained_life -= 1;
+    if (bullet->remained_life <= 0) {
+        bullet->is_fired = 0;
+    }
 }
 
 void move_tank(Map *map) {
