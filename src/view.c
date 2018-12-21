@@ -19,11 +19,11 @@ int EXIT = 10000;
 SDL_Window *window;
 SDL_Renderer *renderer;
 int tank_radius = 18;
-int x_max = 10 * 100;
+int x_max = 11 * 100;
 int y_max = 6 * 100;
 
 void initialize_game_values(Map *map) {
-    srand(time(NULL));
+    srand((unsigned int)(time(NULL)));
     for (int i = 0; i < 3; ++i) {
         map->tank[i].x = rand() % x_max;
         map->tank[i].y = rand() % y_max;
