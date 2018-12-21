@@ -25,8 +25,8 @@ int y_max = 6 * 100 + 50;
 void initialize_game_values(Map *map) {
     srand((unsigned int)(time(NULL)));
     for (int i = 0; i < 3; ++i) {
-        map->tank[i].x = rand() % x_max;
-        map->tank[i].y = rand() % y_max;
+        map->tank[i].x = (rand() % 11) * 100 + 20 + 50 + (rand() % 10);
+        map->tank[i].y = (rand() % 6) * 100 + 20 + 50 + (rand() % 10);
         map->tank[i].angle = (rand() % 360) * pi / 180;
         map->tank[i].is_alive = 1;
         map->tank[i].score = 0;
