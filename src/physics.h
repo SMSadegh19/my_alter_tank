@@ -9,8 +9,8 @@
 #define TANK_PHYSICS_H
 
 void move_tank(Map *map);
-void go_forward(Tank *tank);
-void go_backward(Tank *tank);
+void go_forward(Tank *tank, Map *map);
+void go_backward(Tank *tank, Map *map);
 void turn_tank(Map *map);
 void fire(Tank *tank);
 void bullets_moving(Map *map);

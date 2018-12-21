@@ -4,6 +4,7 @@
 
 #include "physics.h"
 #include "structs.h"
+#include "logic.h"
 #include <math.h>
 
 void bullets_moving(Map *map) {
@@ -28,22 +29,31 @@ void move_bullet(Bullet *bullet) {
 void move_tank(Map *map) {
     for (int i = 0; i < 3; ++i) {
         if (map->tank[i].key_pressed[0]) {
-            go_backward(&(map->tank[i]));
+            go_backward(&(map->tank[i]), map);
         }
         if (map->tank[i].key_pressed[1]) {
-            go_forward(&(map->tank[i]));
+            go_forward(&(map->tank[i]), map);
         }
     }
 }
 
-void go_forward(Tank *tank) {
-    tank->x += (int)(cos(tank->angle) * 8);
-    tank->y += (int)(sin(tank->angle) * 8);
+void go_forward(Tank *tank, Map *map) {
+    int temp_x = tank->x + (int)(cos(tank->angle) * 8);
+    int temp_y = tank->y + (int)(sin(tank->angle) * 8);
+    if (!tank_movement_collid(map, temp_x, temp_y)) {
+        tank->x += (int)(cos(tank->angle) * 8);
+        tank->y += (int)(sin(tank->angle) * 8);
+    }
 }
 
-void go_backward(Tank *tank) {
-    tank->x -= (int)(cos(tank->angle) * 5);
-    tank->y -= (int)(sin(tank->angle) * 5);
+void go_backward(Tank *tank, Map *map) {
+    int temp_x = tank->x - (int)(cos(tank->angle) * 5);
+    int temp_y = tank->y - (int)(sin(tank->angle) * 5);
+    if (!tank_movement_collid(map, temp_x, temp_y)) {
+        tank->x -= (int)(cos(tank->angle) * 5);
+        tank->y -= (int)(sin(tank->angle) * 5);
+    }
+
 }
 
 void turn_tank(Map *map) {

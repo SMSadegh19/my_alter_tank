@@ -121,3 +121,25 @@ void generate_map(Map *map) {
         map->walls[k].y2 += 20;
     }
 }
+
+int pow_2(int a) {
+    return a * a;
+}
+
+int collid_to_vertex(int temp_x, int temp_y) {
+    for (int i = 0; i < 12; ++i) {
+        for (int j = 0; j < 7; ++j) {
+            if (pow_2(temp_x - (i * 100 + 20)) + pow_2(temp_y - (j * 100 + 20)) < pow_2(tank_radius)) {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
+int tank_movement_collid(Map *map, int temp_x, int temp_y) {
+    if (collid_to_vertex(temp_x, temp_y)) {
+        return 1;
+    }
+    return 0;
+}
