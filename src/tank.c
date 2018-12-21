@@ -15,7 +15,6 @@
 Map game_map;
 
 int main() {
-
     game_map.walls = malloc(sizeof(Wall) * 100);
     generate_map(&game_map);
 
