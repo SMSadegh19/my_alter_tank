@@ -108,4 +108,16 @@ void generate_map(Map *map) {
             }
         }
     }
+
+    //convert wall numbers to big one
+    for (int k = 0; k < map->number_of_walls; ++k) {
+        map->walls[k].x1 *= 100;
+        map->walls[k].y1 *= 100;
+        map->walls[k].x2 *= 100;
+        map->walls[k].y2 *= 100;
+        map->walls[k].x1 += 20;
+        map->walls[k].y1 += 20;
+        map->walls[k].x2 += 20;
+        map->walls[k].y2 += 20;
+    }
 }

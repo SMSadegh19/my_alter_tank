@@ -91,7 +91,7 @@ void draw_walls(Map *map) {
 }
 
 void draw_wall(Wall *wall) {
-    lineRGBA(renderer, wall->x1 * 100 + 20, wall->y1 * 100 + 20, wall->x2 * 100 + 20, wall->y2 * 100 + 20, 0, 0, 0, 255);
+    lineRGBA(renderer, wall->x1, wall->y1, wall->x2, wall->y2, 0, 0, 0, 255);
 }
 
 void draw_tank(Tank *tank) {
