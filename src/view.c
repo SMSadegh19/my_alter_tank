@@ -19,8 +19,8 @@ int EXIT = 10000;
 SDL_Window *window;
 SDL_Renderer *renderer;
 int tank_radius = 18;
-int x_max = 11 * 100;
-int y_max = 6 * 100;
+int x_max = 11 * 100 + 50;
+int y_max = 6 * 100 + 50;
 
 void initialize_game_values(Map *map) {
     srand((unsigned int)(time(NULL)));
@@ -91,7 +91,7 @@ void draw_walls(Map *map) {
 }
 
 void draw_wall(Wall *wall) {
-    lineRGBA(renderer, wall->x1 * 100, wall->y1 * 100, wall->x2 * 100, wall->y2 * 100, 0, 0, 0, 255);
+    lineRGBA(renderer, wall->x1 * 100 + 20, wall->y1 * 100 + 20, wall->x2 * 100 + 20, wall->y2 * 100 + 20, 0, 0, 0, 255);
 }
 
 void draw_tank(Tank *tank) {

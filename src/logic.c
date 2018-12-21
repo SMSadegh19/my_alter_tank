@@ -47,11 +47,13 @@ void generate_map(Map *map) {
         }
     }
     //around_walls
+    ///*****
     map->walls[0].x1 = 0; map->walls[0].y1 = 0; map->walls[0].x2 = 11; map->walls[0].y2 = 0;
     map->walls[1].x1 = 11; map->walls[1].y1 = 0; map->walls[1].x2 = 11; map->walls[1].y2 = 6;
     map->walls[2].x1 = 11; map->walls[2].y1 = 6; map->walls[2].x2 = 0; map->walls[2].y2 = 6;
     map->walls[3].x1 = 0; map->walls[3].y1 = 6; map->walls[3].x2 = 0; map->walls[3].y2 = 0;
     map->number_of_walls = 4;
+    ///*****
     //around walls
 //    if (!(rand() % 3)) {
 //        map->walls[map->number_of_walls].x1 = 1; map->walls[map->number_of_walls].y1 = 0; map->walls[map->number_of_walls].x2 = 1; map->walls[map->number_of_walls].y2 = 1;
@@ -60,13 +62,26 @@ void generate_map(Map *map) {
 //    }
     int i, j;
     while (exist_0_vertex()) {
-        for (i = 1; i < 11; i++) {
-            for (j = 1; j < 6; ++j) {
+        for (i = 0; i < 12; i++) {
+            for (j = 0; j < 7; ++j) {
                 while (1) {
                     int number_of_ways = 0;
                     int is_ok_to_go[4] = {};
+                    int warn_to_go[4] = {};
                     for (int k = 0; k < 4; ++k) {
-                        if (!(vertex[i + dx[k]][j + dy[k]])) {
+                        if (j == 0) {
+                            warn_to_go[1] = 1;
+                        }
+                        if (j == 6) {
+                            warn_to_go[0] = 1;
+                        }
+                        if (i == 0) {
+                            warn_to_go[3] = 1;
+                        }
+                        if (i == 11) {
+                            warn_to_go[2] = 1;
+                        }
+                        if (warn_to_go[k] == 0 && !(vertex[i + dx[k]][j + dy[k]])) {
                             number_of_ways++;
                             is_ok_to_go[k] = 1;
                         }
@@ -78,7 +93,7 @@ void generate_map(Map *map) {
                     while (!is_ok_to_go[k]) {
                         k = rand() % 4;
                     }
-                    if (rand() % 2) {
+                    if (rand() % 3) {
                         map->walls[map->number_of_walls].x1 = i;
                         map->walls[map->number_of_walls].y1 = j;
                         map->walls[map->number_of_walls].x2 = i + dx[k];
