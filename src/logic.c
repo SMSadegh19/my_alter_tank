@@ -145,8 +145,30 @@ int collid_to_vertex(int temp_x, int temp_y) {
     return 0;
 }
 
+int collid_to_edge(Map *map, int temp_x, int temp_y) {
+    for (int i = 0; i < map->number_of_walls; ++i) {
+        if (map->walls[i].vertical) {
+            if ((map->walls[i].y1 <= temp_y && temp_y <= map->walls[i].y2) || (map->walls[i].y2 <= temp_y && temp_y <= map->walls[i].y1)) {
+                if (pow_2(temp_x - map->walls[i].x1) < pow_2(tank_radius)) {
+                    return 1;
+                }
+            }
+        } else {
+            if ((map->walls[i].x1 <= temp_x && temp_x <= map->walls[i].x2) || (map->walls[i].x2 <= temp_x && temp_x <= map->walls[i].x1)) {
+                if (pow_2(temp_y - map->walls[i].y1) < pow_2(tank_radius)) {
+                    return 1;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
 int tank_movement_collid(Map *map, int temp_x, int temp_y) {
     if (collid_to_vertex(temp_x, temp_y)) {
+        return 1;
+    }
+    if (collid_to_edge(map, temp_x, temp_y)) {
         return 1;
     }
     return 0;
