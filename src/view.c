@@ -13,7 +13,7 @@
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include <time.h>
 
-const double pi = 3.141592;
+const double pi = 3.14159265358979323846264338327950288419716939937510;
 int EXIT = 10000;
 
 SDL_Window *window;

@@ -29,6 +29,7 @@ typedef struct {
     int y1;
     int x2;
     int y2;
+    int vertical;//1: means vertical //0: means horizontal
 } Wall;
 
 typedef struct {

@@ -33,6 +33,13 @@ int exist_0_vertex() {
     return exist;
 }
 
+int is_wall_vertical(int x1, int x2) {
+    if (x1 == x2) {
+        return 1;
+    }
+    return 0;
+}
+
 void generate_map(Map *map) {
     srand((unsigned int)(time(NULL)));
     map->number_of_walls = 0;
@@ -48,10 +55,10 @@ void generate_map(Map *map) {
     }
     //around_walls
     ///*****
-    map->walls[0].x1 = 0; map->walls[0].y1 = 0; map->walls[0].x2 = 11; map->walls[0].y2 = 0;
-    map->walls[1].x1 = 11; map->walls[1].y1 = 0; map->walls[1].x2 = 11; map->walls[1].y2 = 6;
-    map->walls[2].x1 = 11; map->walls[2].y1 = 6; map->walls[2].x2 = 0; map->walls[2].y2 = 6;
-    map->walls[3].x1 = 0; map->walls[3].y1 = 6; map->walls[3].x2 = 0; map->walls[3].y2 = 0;
+    map->walls[0].x1 = 0; map->walls[0].y1 = 0; map->walls[0].x2 = 11; map->walls[0].y2 = 0; map->walls[0].vertical = 0;
+    map->walls[1].x1 = 11; map->walls[1].y1 = 0; map->walls[1].x2 = 11; map->walls[1].y2 = 6; map->walls[1].vertical = 1;
+    map->walls[2].x1 = 11; map->walls[2].y1 = 6; map->walls[2].x2 = 0; map->walls[2].y2 = 6; map->walls[2].vertical = 0;
+    map->walls[3].x1 = 0; map->walls[3].y1 = 6; map->walls[3].x2 = 0; map->walls[3].y2 = 0; map->walls[3].vertical = 1;
     map->number_of_walls = 4;
     ///*****
     //around walls
@@ -98,6 +105,7 @@ void generate_map(Map *map) {
                         map->walls[map->number_of_walls].y1 = j;
                         map->walls[map->number_of_walls].x2 = i + dx[k];
                         map->walls[map->number_of_walls].y2 = j + dy[k];
+                        map->walls[map->number_of_walls].vertical = is_wall_vertical(i, i + dx[k]);
                         map->number_of_walls++;
                         vertex[i][j] = 1;
                         vertex[i + dx[k]][j + dy[k]] = 1;
