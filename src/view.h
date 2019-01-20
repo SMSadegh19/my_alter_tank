@@ -9,6 +9,7 @@
 #ifndef TANK_VIEW_H
 #define TANK_VIEW_H
 
+extern const double pi;
 extern int EXIT;
 extern int tank_radius;
 

@@ -6,6 +6,7 @@
 #define TANK_STRUCTS_H
 
 typedef struct {
+    int in_wall;
     int x;
     int y;
     double angle;

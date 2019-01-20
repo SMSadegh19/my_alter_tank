@@ -18,6 +18,7 @@ void bullets_moving(Map *map) {
 }
 
 void move_bullet(Bullet *bullet, Map *map) {
+    bullet_collid_wall(bullet, map);
     bullet->x += (int)(cos(bullet->angle) * 10);
     bullet->y += (int)(sin(bullet->angle) * 10);
     bullet_collid_tank(bullet, map);
@@ -76,6 +77,7 @@ void fire(Tank *tank) {
             tank->bullet[i].y = tank->y + (int) ((tank_radius + 3) * sin(tank->angle));
             tank->bullet[i].angle = tank->angle;
             tank->bullet[i].is_fired = 1;
+            tank->bullet[i].in_wall = 0;
             break;
         }
     }

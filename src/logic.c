@@ -186,3 +186,43 @@ void bullet_collid_tank(Bullet *bullet, Map *map) {
         }
     }
 }
+
+int in_Wall(Bullet *bullet, Map *map, Wall **pwall) {
+    for (int i = 0; i < map->number_of_walls; ++i) {
+        Wall *wally = &(map->walls[i]);
+        if (wally->vertical) {
+            if ( (wally->y1 <= bullet->y && bullet->y <= wally->y2) || (wally->y2 <= bullet->y && bullet->y <= wally->y1) ) {
+                if (abs(bullet->x - wally->x1) <= 5) {
+                    *pwall = wally;
+                    return 1;
+                }
+            }
+        } else {
+            if ( (wally->x1 <= bullet->x && bullet->x <= wally->x2) || (wally->x2 <= bullet->x && bullet->x <= wally->x1) ) {
+                if (abs(bullet->y - wally->y1) <= 5) {
+                    *pwall = wally;
+                    return 1;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+void bullet_collid_wall(Bullet *bullet, Map *map) {
+    Wall *pwall;
+    if (bullet->in_wall == 0) {
+        if (in_Wall(bullet, map, &pwall)) {
+            bullet->in_wall = 1;
+            if (pwall->vertical) {
+                bullet->angle = pi - bullet->angle;
+            } else {
+                bullet->angle = -bullet->angle;
+            }
+        }
+    } else {
+        if (in_Wall(bullet, map, &pwall) == 0) {
+            bullet->in_wall = 0;
+        }
+    }
+}
