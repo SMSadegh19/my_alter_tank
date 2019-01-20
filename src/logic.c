@@ -88,16 +88,16 @@ void generate_map(Map *map) {
                         if (i == 11) {
                             warn_to_go[2] = 1;
                         }
-                        if (warn_to_go[k] == 0 && !(vertex[i + dx[k]][j + dy[k]])) {
+                        if (warn_to_go[k] == 0 && vertex[i + dx[k]][j + dy[k]] == 0) {
                             number_of_ways++;
                             is_ok_to_go[k] = 1;
                         }
                     }
-                    if (!number_of_ways) {
+                    if (number_of_ways == 0) {
                         break;
                     }
                     int k = rand() % 4;
-                    while (!is_ok_to_go[k]) {
+                    while (is_ok_to_go[k] == 0) {
                         k = rand() % 4;
                     }
                     if (rand() % 3) {
@@ -172,4 +172,17 @@ int tank_movement_collid(Map *map, int temp_x, int temp_y) {
         return 1;
     }
     return 0;
+}
+
+void bullet_collid_tank(Bullet *bullet, Map *map) {
+    for (int i = 0; i < 3; ++i) {
+        Tank *tank = &(map->tank[i]);
+        if (tank->is_alive) {
+            if (pow_2(bullet->x - tank->x) + pow_2(bullet->y - tank->y) < pow_2(tank_radius)) {
+                tank->is_alive = 0;
+                bullet->is_fired = 0;
+                return;
+            }
+        }
+    }
 }

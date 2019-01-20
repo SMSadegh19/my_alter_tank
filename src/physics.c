@@ -11,15 +11,16 @@ void bullets_moving(Map *map) {
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 6; ++j) {
             if (map->tank[i].bullet[j].is_fired) {
-                move_bullet(&(map->tank[i].bullet[j]));
+                move_bullet(&(map->tank[i].bullet[j]), map);
             }
         }
     }
 }
 
-void move_bullet(Bullet *bullet) {
+void move_bullet(Bullet *bullet, Map *map) {
     bullet->x += (int)(cos(bullet->angle) * 10);
     bullet->y += (int)(sin(bullet->angle) * 10);
+    bullet_collid_tank(bullet, map);
     bullet->remained_life -= 1;
     if (bullet->remained_life <= 0) {
         bullet->is_fired = 0;
@@ -53,7 +54,6 @@ void go_backward(Tank *tank, Map *map) {
         tank->x -= (int)(cos(tank->angle) * 5);
         tank->y -= (int)(sin(tank->angle) * 5);
     }
-
 }
 
 void turn_tank(Map *map) {

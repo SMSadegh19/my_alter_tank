@@ -33,6 +33,7 @@ typedef struct {
 } Wall;
 
 typedef struct {
+    int game_pause;
     int number_of_walls;
     Tank tank[3];
     Wall *walls;

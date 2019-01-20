@@ -1,4 +1,4 @@
-/snap/clion/57/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - Unix Makefiles" /home/sadegh/tank
+/snap/clion/58/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - Unix Makefiles" /home/sadegh/tank
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/sadegh/tank

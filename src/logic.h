@@ -9,8 +9,8 @@
 #define TANK_LOGIC_H
 
 void generate_map(Map *map);
-    int exist_0_vertex();
+int exist_0_vertex();
 int tank_movement_collid(Map *map, int temp_x, int temp_y);
-int bullet_collid(Bullet *bullet, Map *map);
+void bullet_collid_tank(Bullet *bullet, Map *map);
 
 #endif //TANK_LOGIC_H
