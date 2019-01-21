@@ -21,7 +21,6 @@ int main() {
     game_map.walls = malloc(sizeof(Wall) * 100);
     generate_map(&game_map);
 
-
     initialize_game_values(&game_map);
     init_window();
     int s_continue = 1;//to realize should continue or no??
@@ -30,6 +29,13 @@ int main() {
         if (game_map.game_pause == 0) {
             draw_shapes(&game_map);
             bullets_moving(&game_map);
+        } else {
+            if (game_map.first_menu) {
+                draw_first_menu();
+            } else {
+//                draw_shapes(&game_map);
+//                draw_game_menu();
+            }
         }
         if (event_handling(&game_map) == EXIT) break;
         present_window();

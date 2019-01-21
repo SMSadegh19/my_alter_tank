@@ -12,6 +12,7 @@
 extern const double pi;
 extern int EXIT;
 extern int tank_radius;
+extern int is_selected;
 
 void initialize_game_values(Map *map);
 void init_window();
@@ -19,6 +20,9 @@ void render_clear();
 void present_window();
 void quit_window();
 void draw_shapes(Map *map);
+void draw_first_menu();
+void draw_button(char *string, int x, int y, int a, int b, int NUMBER);
+void draw_game_menu();
 void draw_tank(Tank *tank);
 void draw_tank_gun(Tank *tank);
 void draw_bullet(Bullet *bullet);

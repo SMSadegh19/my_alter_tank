@@ -6,43 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/sadegh/tank/src/logic.c
-stdio.h
--
-stdlib.h
--
-math.h
--
-time.h
--
-SDL2/SDL.h
--
-SDL2/SDL2_gfxPrimitives.h
--
-structs.h
-/home/sadegh/tank/src/structs.h
-view.h
-/home/sadegh/tank/src/view.h
-physics.h
-/home/sadegh/tank/src/physics.h
-logic.h
-/home/sadegh/tank/src/logic.h
-
 /home/sadegh/tank/src/logic.h
 structs.h
 /home/sadegh/tank/src/structs.h
 view.h
 /home/sadegh/tank/src/view.h
-
-/home/sadegh/tank/src/physics.c
-physics.h
-/home/sadegh/tank/src/physics.h
-structs.h
-/home/sadegh/tank/src/structs.h
-logic.h
-/home/sadegh/tank/src/logic.h
-math.h
--
 
 /home/sadegh/tank/src/physics.h
 structs.h
@@ -51,26 +19,6 @@ view.h
 /home/sadegh/tank/src/view.h
 
 /home/sadegh/tank/src/structs.h
-
-/home/sadegh/tank/src/tank.c
-stdio.h
--
-stdlib.h
--
-math.h
--
-SDL2/SDL.h
--
-SDL2/SDL2_gfxPrimitives.h
--
-structs.h
-/home/sadegh/tank/src/structs.h
-view.h
-/home/sadegh/tank/src/view.h
-physics.h
-/home/sadegh/tank/src/physics.h
-logic.h
-/home/sadegh/tank/src/logic.h
 
 /home/sadegh/tank/src/view.c
 view.h

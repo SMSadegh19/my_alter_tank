@@ -15,6 +15,7 @@
 
 const double pi = 3.14159265358979323846264338327950288419716939937510;
 int EXIT = 10000;
+int is_selected;
 
 SDL_Window *window;
 SDL_Renderer *renderer;
@@ -23,7 +24,9 @@ int x_max = 11 * 100 + 50;
 int y_max = 6 * 100 + 50;
 
 void initialize_game_values(Map *map) {
+    is_selected = 0;
     map->game_pause = 1;
+    map->first_menu = 1;
     srand((unsigned int)(time(NULL)));
     for (int i = 0; i < 3; ++i) {
         map->tank[i].x = (rand() % 11) * 100 + 20 + 50 + (rand() % 10);
@@ -69,6 +72,26 @@ void present_window() {
 
 void quit_window() {
     SDL_Quit();
+}
+
+void draw_first_menu() {
+    int first_y = 120;
+    draw_button("NEW GAME", x_max / 2, 1 * first_y, 200, 100, 0);
+    draw_button("LOAD GAME", x_max / 2, 2 * first_y, 200, 100, 1);
+    draw_button("QUIT", x_max / 2, 3 * first_y, 200, 100, 2);
+}
+
+void draw_button(char *string, int x, int y, int a, int b, int NUMBER) {
+    int color, radian;
+    if (NUMBER == is_selected) {
+        color = 70;
+        radian = 40;
+    } else {
+        color = 0;
+        radian = 30;
+    }
+    roundedBoxRGBA(renderer, x - a/2, y - b/2, x + a/2, y + b/2, radian, color, 200, color, 255);
+    stringRGBA(renderer, x - 4*strlen(string) + 3, y, string, 0, 0, 0, 255);
 }
 
 void draw_shapes(Map *map) {
@@ -117,101 +140,141 @@ int event_handling(Map *map) {
     while(SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT)
             return EXIT;
-        if (event.type == SDL_KEYDOWN) {
-            switch (event.key.keysym.sym) {
-                //tank0
-                case SDLK_DOWN:
-                    map->tank[0].key_pressed[0] = 1;
-                    break;
-                case SDLK_UP:
-                    map->tank[0].key_pressed[1] = 1;
-                    break;
-                case SDLK_RIGHT:
-                    map->tank[0].key_pressed[2] = 1;
-                    break;
-                case SDLK_LEFT:
-                    map->tank[0].key_pressed[3] = 1;
-                    break;
-                //tank1
-                case SDLK_d:
-                    map->tank[1].key_pressed[0] = 1;
-                    break;
-                case SDLK_e:
-                    map->tank[1].key_pressed[1] = 1;
-                    break;
-                case SDLK_f:
-                    map->tank[1].key_pressed[2] = 1;
-                    break;
-                case SDLK_s:
-                    map->tank[1].key_pressed[3] = 1;
-                    break;
-                //tank2
-                case SDLK_KP_5:
-                    map->tank[2].key_pressed[0] = 1;
-                    break;
-                case SDLK_KP_8:
-                    map->tank[2].key_pressed[1] = 1;
-                    break;
-                case SDLK_KP_6:
-                    map->tank[2].key_pressed[2] = 1;
-                    break;
-                case SDLK_KP_4:
-                    map->tank[2].key_pressed[3] = 1;
-                    break;
+        if (map->game_pause == 0) {
+            if (event.type == SDL_KEYDOWN) {
+                switch (event.key.keysym.sym) {
+                    //tank0
+                    case SDLK_DOWN:
+                        map->tank[0].key_pressed[0] = 1;
+                        break;
+                    case SDLK_UP:
+                        map->tank[0].key_pressed[1] = 1;
+                        break;
+                    case SDLK_RIGHT:
+                        map->tank[0].key_pressed[2] = 1;
+                        break;
+                    case SDLK_LEFT:
+                        map->tank[0].key_pressed[3] = 1;
+                        break;
+                        //tank1
+                    case SDLK_d:
+                        map->tank[1].key_pressed[0] = 1;
+                        break;
+                    case SDLK_e:
+                        map->tank[1].key_pressed[1] = 1;
+                        break;
+                    case SDLK_f:
+                        map->tank[1].key_pressed[2] = 1;
+                        break;
+                    case SDLK_s:
+                        map->tank[1].key_pressed[3] = 1;
+                        break;
+                        //tank2
+                    case SDLK_KP_5:
+                        map->tank[2].key_pressed[0] = 1;
+                        break;
+                    case SDLK_KP_8:
+                        map->tank[2].key_pressed[1] = 1;
+                        break;
+                    case SDLK_KP_6:
+                        map->tank[2].key_pressed[2] = 1;
+                        break;
+                    case SDLK_KP_4:
+                        map->tank[2].key_pressed[3] = 1;
+                        break;
+                }
+            } else if (event.type == SDL_KEYUP) {
+                switch (event.key.keysym.sym) {
+                    //tank0
+                    case SDLK_ESCAPE:
+                        map->game_pause = !(map->game_pause);
+                        break;
+                    case SDLK_DOWN:
+                        map->tank[0].key_pressed[0] = 0;
+                        break;
+                    case SDLK_UP:
+                        map->tank[0].key_pressed[1] = 0;
+                        break;
+                    case SDLK_RIGHT:
+                        map->tank[0].key_pressed[2] = 0;
+                        break;
+                    case SDLK_LEFT:
+                        map->tank[0].key_pressed[3] = 0;
+                        break;
+                    case SDLK_m:
+                        fire(&(map->tank[0]));
+                        break;
+                        //tank1
+                    case SDLK_d:
+                        map->tank[1].key_pressed[0] = 0;
+                        break;
+                    case SDLK_e:
+                        map->tank[1].key_pressed[1] = 0;
+                        break;
+                    case SDLK_f:
+                        map->tank[1].key_pressed[2] = 0;
+                        break;
+                    case SDLK_s:
+                        map->tank[1].key_pressed[3] = 0;
+                        break;
+                    case SDLK_q:
+                        fire(&(map->tank[1]));
+                        break;
+                        //tank2
+                    case SDLK_KP_5:
+                        map->tank[2].key_pressed[0] = 0;
+                        break;
+                    case SDLK_KP_8:
+                        map->tank[2].key_pressed[1] = 0;
+                        break;
+                    case SDLK_KP_6:
+                        map->tank[2].key_pressed[2] = 0;
+                        break;
+                    case SDLK_KP_4:
+                        map->tank[2].key_pressed[3] = 0;
+                        break;
+                    case SDLK_KP_0:
+                        fire(&(map->tank[2]));
+                        break;
+                }
             }
-        } else if (event.type == SDL_KEYUP) {
-            switch (event.key.keysym.sym) {
-                //tank0
-                case SDLK_ESCAPE:
-                    map->game_pause = !(map->game_pause);
-                    break;
-                case SDLK_DOWN:
-                    map->tank[0].key_pressed[0] = 0;
-                    break;
-                case SDLK_UP:
-                    map->tank[0].key_pressed[1] = 0;
-                    break;
-                case SDLK_RIGHT:
-                    map->tank[0].key_pressed[2] = 0;
-                    break;
-                case SDLK_LEFT:
-                    map->tank[0].key_pressed[3] = 0;
-                    break;
-                case SDLK_m:
-                    fire(&(map->tank[0]));
-                    break;
-                //tank1
-                case SDLK_d:
-                    map->tank[1].key_pressed[0] = 0;
-                    break;
-                case SDLK_e:
-                    map->tank[1].key_pressed[1] = 0;
-                    break;
-                case SDLK_f:
-                    map->tank[1].key_pressed[2] = 0;
-                    break;
-                case SDLK_s:
-                    map->tank[1].key_pressed[3] = 0;
-                    break;
-                case SDLK_q:
-                    fire(&(map->tank[1]));
-                    break;
-                //tank2
-                case SDLK_KP_5:
-                    map->tank[2].key_pressed[0] = 0;
-                    break;
-                case SDLK_KP_8:
-                    map->tank[2].key_pressed[1] = 0;
-                    break;
-                case SDLK_KP_6:
-                    map->tank[2].key_pressed[2] = 0;
-                    break;
-                case SDLK_KP_4:
-                    map->tank[2].key_pressed[3] = 0;
-                    break;
-                case SDLK_KP_0:
-                    fire(&(map->tank[2]));
-                    break;
+        } else {
+            if (event.type == SDL_KEYDOWN) {
+                switch (event.key.keysym.sym) {
+                    //tank0
+                    case SDLK_DOWN:
+                        //map->tank[0].key_pressed[0] = 1;
+                        break;
+                }
+            } else if (event.type == SDL_KEYUP) {
+                switch (event.key.keysym.sym) {
+                    //tank0
+                    case SDLK_ESCAPE:
+                        map->game_pause = !(map->game_pause);
+                        break;
+                    case SDLK_DOWN:
+                        is_selected = (is_selected + 1) % 3;
+                        break;
+                    case SDLK_UP:
+                        is_selected--;
+                        if (is_selected == -1) {
+                            is_selected = 2;
+                        }
+                        break;
+                    case SDLK_SPACE:
+                        switch (is_selected) {
+                            case 0:
+                                map->game_pause = 0;
+                                break;
+                            case 1:
+                                2*2;
+                                break;
+                            case 2:
+                                return EXIT;
+                                break;
+                        }
+                        break;
+                }
             }
         }
     }

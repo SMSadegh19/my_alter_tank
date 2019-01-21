@@ -35,6 +35,7 @@ typedef struct {
 
 typedef struct {
     int game_pause;
+    int first_menu;
     int number_of_walls;
     Tank tank[3];
     Wall *walls;
