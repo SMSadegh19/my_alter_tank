@@ -187,6 +187,19 @@ void add_score(Map *map) {
     }
 }
 
+int is_two_dead(Map *map) {
+    int deads = 0;
+    for (int i = 0; i < 3; ++i) {
+        if (map->tank[i].is_alive == 0) {
+            deads++;
+        }
+    }
+    if (deads >= 2) {
+        return 1;
+    }
+    return 0;
+}
+
 void bullet_collid_tank(Bullet *bullet, Map *map) {
     for (int i = 0; i < 3; ++i) {
         Tank *tank = &(map->tank[i]);
@@ -195,6 +208,10 @@ void bullet_collid_tank(Bullet *bullet, Map *map) {
                 tank->is_alive = 0;
                 bullet->is_fired = 0;
                 add_score(map);
+                if (is_two_dead(map)) {
+                    zero_key_pressed(map);
+                    tanks_rand_place(map);
+                }
                 return;
             }
         }

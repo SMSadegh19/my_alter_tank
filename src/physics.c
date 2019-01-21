@@ -69,6 +69,9 @@ void turn_tank(Map *map) {
 }
 
 void fire(Tank *tank) {
+    if (tank->is_alive == 0) {
+        return;
+    }
     for (int i = 0; i < 6; ++i) {
         if (tank->bullet[i].is_fired == 0) {
             //initializing bullet
