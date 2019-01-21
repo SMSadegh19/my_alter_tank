@@ -21,17 +21,15 @@ SDL_Window *window;
 SDL_Renderer *renderer;
 int tank_radius = 18;
 int x_max = 11 * 100 + 50;
-int y_max = 6 * 100 + 50;
+int y_max = 6 * 100 + 100;
 
 void initialize_game_values(Map *map) {
     is_selected = 0;
     map->game_pause = 1;
     map->first_menu = 1;
     srand((unsigned int)(time(NULL)));
+    tanks_rand_place(map);
     for (int i = 0; i < 3; ++i) {
-        map->tank[i].x = (rand() % 11) * 100 + 20 + 50 + (rand() % 10);
-        map->tank[i].y = (rand() % 6) * 100 + 20 + 50 + (rand() % 10);
-        map->tank[i].angle = (rand() % 360) * pi / 180;
         map->tank[i].is_alive = 1;
         map->tank[i].score = 0;
         for (int j = 0; j < 3; ++j) {
@@ -53,6 +51,15 @@ void zero_key_pressed(Map *map) {
         for (int r = 0; r < 4; ++r) {
             map->tank[i].key_pressed[r] = 0;
         }
+    }
+}
+
+void tanks_rand_place(Map *map) {
+    srand((unsigned int)(time(NULL)));
+    for (int i = 0; i < 3; ++i) {
+        map->tank[i].x = (rand() % 11) * 100 + 20 + 50 + (rand() % 10);
+        map->tank[i].y = (rand() % 6) * 100 + 20 + 50 + (rand() % 10);
+        map->tank[i].angle = (rand() % 360) * pi / 180;
     }
 }
 
@@ -89,7 +96,7 @@ void draw_first_menu() {
 
 void draw_game_menu() {
     int length = 120;
-    roundedBoxRGBA(renderer, x_max/2 - 150, y_max/2 - 210, x_max/2 + 150, y_max/2 + 210, 20, 120, 120, 255, 160);
+    roundedBoxRGBA(renderer, x_max/2 - 150, y_max/2 - 210, x_max/2 + 150, y_max/2 + 210, 20, 255, 99, 99, 160);
     draw_button("RESUME", x_max / 2, y_max/2 - 1 * length, 200, 100, 0, 160);
     draw_button("SAVE GAME", x_max / 2, y_max/2 + 0 * length, 200, 100, 1, 160);
     draw_button("MAIN MENU", x_max / 2, y_max/2 + 1 * length, 200, 100, 2, 160);
@@ -121,6 +128,35 @@ void draw_shapes(Map *map) {
                 draw_bullet(&(map->tank[i].bullet[j]));
             }
         }
+    }
+    draw_scores(map);
+}
+
+char *convert_number_to_string(int number) {
+    char *mystring = malloc(100);
+    if (number == 0) {
+        mystring[0] = '0';
+        mystring[1] = '\0';
+        return mystring;
+    }
+    int tedad_ragham = 0;
+    int x = number;
+    while (x) {
+        x /= 10;
+        tedad_ragham++;
+    }
+    for (int i = tedad_ragham - 1; i > -1; i--) {
+        mystring[i] = (char) ('0' + (number % 10));
+        number /= 10;
+    }
+    mystring[tedad_ragham] = '\0';
+    return mystring;
+}
+
+void draw_scores(Map *map) {
+    int distance = 200;
+    for (int i = 0; i < 3; ++i) {
+        draw_button(convert_number_to_string(map->tank[i].score), x_max/2 + (i - 1)*distance, (y_max * 16) / 17, 20, 20, 10, 255);
     }
 }
 

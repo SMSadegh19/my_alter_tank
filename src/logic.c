@@ -179,6 +179,14 @@ int tank_movement_collid(Map *map, int temp_x, int temp_y) {
     return 0;
 }
 
+void add_score(Map *map) {
+    for (int i = 0; i < 3; ++i) {
+        if (map->tank[i].is_alive) {
+            map->tank[i].score++;
+        }
+    }
+}
+
 void bullet_collid_tank(Bullet *bullet, Map *map) {
     for (int i = 0; i < 3; ++i) {
         Tank *tank = &(map->tank[i]);
@@ -186,6 +194,7 @@ void bullet_collid_tank(Bullet *bullet, Map *map) {
             if (pow_2(bullet->x - tank->x) + pow_2(bullet->y - tank->y) < pow_2(tank_radius)) {
                 tank->is_alive = 0;
                 bullet->is_fired = 0;
+                add_score(map);
                 return;
             }
         }

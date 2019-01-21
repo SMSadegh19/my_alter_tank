@@ -11,6 +11,7 @@
 void generate_map(Map *map);
 int exist_0_vertex();
 int tank_movement_collid(Map *map, int temp_x, int temp_y);
+void add_score(Map *map);
 void bullet_collid_tank(Bullet *bullet, Map *map);
 void bullet_collid_wall(Bullet *bullet, Map *map);
 
