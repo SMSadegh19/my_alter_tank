@@ -13,7 +13,7 @@
 #include "physics.h"
 #include "logic.h"
 
-int vertex[12][7] = {};
+int vertex[12][7];
 int dx[4] = {0, 0, 1, -1};
 int dy[4] = {1, -1, 0, 0};
 
@@ -43,6 +43,11 @@ int is_wall_vertical(int x1, int x2) {
 void generate_map(Map *map) {
     srand((unsigned int)(time(NULL)));
     map->number_of_walls = 0;
+    for (int i = 0; i < 12; ++i) {
+        for (int j = 0; j < 7; ++j) {
+            vertex[i][j] = 0;
+        }
+    }
     for (int i = 0; i < 12; i += 11) {
         for (int j = 0; j < 7; j++) {
             vertex[i][j] = 1;

@@ -44,6 +44,12 @@ void initialize_game_values(Map *map) {
         for (int k = 0; k < 6; ++k) {
             map->tank[i].bullet[k].is_fired = 0;
         }
+    }
+    zero_key_pressed(map);
+}
+
+void zero_key_pressed(Map *map) {
+    for (int i = 0; i < 3; ++i) {
         for (int r = 0; r < 4; ++r) {
             map->tank[i].key_pressed[r] = 0;
         }
@@ -76,21 +82,31 @@ void quit_window() {
 
 void draw_first_menu() {
     int first_y = 120;
-    draw_button("NEW GAME", x_max / 2, 1 * first_y, 200, 100, 0);
-    draw_button("LOAD GAME", x_max / 2, 2 * first_y, 200, 100, 1);
-    draw_button("QUIT", x_max / 2, 3 * first_y, 200, 100, 2);
+    draw_button("NEW GAME", x_max / 2, 1 * first_y, 200, 100, 0, 255);
+    draw_button("LOAD GAME", x_max / 2, 2 * first_y, 200, 100, 1, 255);
+    draw_button("QUIT", x_max / 2, 3 * first_y, 200, 100, 2, 255);
 }
 
-void draw_button(char *string, int x, int y, int a, int b, int NUMBER) {
-    int color, radian;
+void draw_game_menu() {
+    int length = 120;
+    roundedBoxRGBA(renderer, x_max/2 - 150, y_max/2 - 210, x_max/2 + 150, y_max/2 + 210, 20, 120, 120, 255, 160);
+    draw_button("RESUME", x_max / 2, y_max/2 - 1 * length, 200, 100, 0, 160);
+    draw_button("SAVE GAME", x_max / 2, y_max/2 + 0 * length, 200, 100, 1, 160);
+    draw_button("MAIN MENU", x_max / 2, y_max/2 + 1 * length, 200, 100, 2, 160);
+}
+
+void draw_button(char *string, int x, int y, int a, int b, int NUMBER, int alpha) {
+    int color, color2, radian;
     if (NUMBER == is_selected) {
-        color = 70;
+        color = 0;
+        color2 = 180;
         radian = 40;
     } else {
-        color = 0;
+        color = 200;
+        color2 = 0;
         radian = 30;
     }
-    roundedBoxRGBA(renderer, x - a/2, y - b/2, x + a/2, y + b/2, radian, color, 200, color, 255);
+    roundedBoxRGBA(renderer, x - a/2, y - b/2, x + a/2, y + b/2, radian, color, color2, color, alpha);
     stringRGBA(renderer, x - 4*strlen(string) + 3, y, string, 0, 0, 0, 255);
 }
 
@@ -115,8 +131,8 @@ void draw_walls(Map *map) {
 }
 
 void draw_wall(Wall *wall) {
-    thickLineRGBA(renderer, wall->x1, wall->y1, wall->x2, wall->y2, 5, 0, 0, 0, 255);
-//    lineRGBA(renderer, wall->x1, wall->y1, wall->x2, wall->y2, 0, 0, 0, 255);
+//    thickLineRGBA(renderer, wall->x1, wall->y1, wall->x2, wall->y2, 5, 0, 0, 0, 255);
+    lineRGBA(renderer, wall->x1, wall->y1, wall->x2, wall->y2, 0, 0, 0, 255);
 }
 
 void draw_tank(Tank *tank) {
@@ -187,7 +203,9 @@ int event_handling(Map *map) {
                 switch (event.key.keysym.sym) {
                     //tank0
                     case SDLK_ESCAPE:
-                        map->game_pause = !(map->game_pause);
+                        zero_key_pressed(map);
+                        map->game_pause = 1;
+                        map->first_menu = 0;
                         break;
                     case SDLK_DOWN:
                         map->tank[0].key_pressed[0] = 0;
@@ -250,7 +268,9 @@ int event_handling(Map *map) {
                 switch (event.key.keysym.sym) {
                     //tank0
                     case SDLK_ESCAPE:
-                        map->game_pause = !(map->game_pause);
+                        if (map->first_menu == 0) {
+                            map->game_pause = 0;
+                        }
                         break;
                     case SDLK_DOWN:
                         is_selected = (is_selected + 1) % 3;
@@ -261,17 +281,28 @@ int event_handling(Map *map) {
                             is_selected = 2;
                         }
                         break;
-                    case SDLK_SPACE:
+                    case SDLK_RETURN:
                         switch (is_selected) {
                             case 0:
+                                if (map->first_menu) {
+                                    generate_map(map);
+                                    initialize_game_values(map);
+                                }
                                 map->game_pause = 0;
                                 break;
                             case 1:
-                                2*2;
+                                if (map->first_menu) {
+                                    //for loading game
+                                } else {
+                                    //for saving game
+                                }
                                 break;
                             case 2:
-                                return EXIT;
-                                break;
+                                if (map->first_menu) {
+                                    return EXIT;
+                                } else {
+                                    map->first_menu = 1;
+                                }
                         }
                         break;
                 }

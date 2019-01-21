@@ -33,8 +33,8 @@ int main() {
             if (game_map.first_menu) {
                 draw_first_menu();
             } else {
-//                draw_shapes(&game_map);
-//                draw_game_menu();
+                draw_shapes(&game_map);
+                draw_game_menu();
             }
         }
         if (event_handling(&game_map) == EXIT) break;
