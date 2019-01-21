@@ -23,6 +23,7 @@ int x_max = 11 * 100 + 50;
 int y_max = 6 * 100 + 50;
 
 void initialize_game_values(Map *map) {
+    map->game_pause = 1;
     srand((unsigned int)(time(NULL)));
     for (int i = 0; i < 3; ++i) {
         map->tank[i].x = (rand() % 11) * 100 + 20 + 50 + (rand() % 10);
@@ -161,6 +162,9 @@ int event_handling(Map *map) {
         } else if (event.type == SDL_KEYUP) {
             switch (event.key.keysym.sym) {
                 //tank0
+                case SDLK_ESCAPE:
+                    map->game_pause = !(map->game_pause);
+                    break;
                 case SDLK_DOWN:
                     map->tank[0].key_pressed[0] = 0;
                     break;
