@@ -107,6 +107,23 @@ void draw_game_menu() {
 }
 
 void draw_button(char *string, int x, int y, int a, int b, int NUMBER, int alpha) {
+    if (NUMBER > 9) {
+        int red = 100, green = 100, blue = 100;
+        switch(NUMBER) {
+            case 10:
+                red = 255;
+                break;
+            case 11:
+                green = 255;
+                break;
+            case 12:
+                blue = 255;
+                break;
+        }
+        roundedBoxRGBA(renderer, x - a/2, y - b/2, x + a/2, y + b/2, 30, red, green, blue, alpha);
+        stringRGBA(renderer, x - 4*strlen(string) + 3, y, string, 0, 0, 0, 255);
+        return;
+    }
     int color, color2, radian;
     if (NUMBER == is_selected) {
         color = 0;
@@ -160,7 +177,7 @@ char *convert_number_to_string(int number) {
 void draw_scores(Map *map) {
     int distance = 200;
     for (int i = 0; i < 3; ++i) {
-        draw_button(convert_number_to_string(map->tank[i].score), x_max/2 + (i - 1)*distance, (y_max * 16) / 17, 20, 20, 10, 255);
+        draw_button(convert_number_to_string(map->tank[i].score), x_max/2 + (i - 1)*distance, (y_max * 16) / 17, 20, 20, 10 + i, 255);
     }
 }
 
