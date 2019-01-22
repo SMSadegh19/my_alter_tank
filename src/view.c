@@ -61,6 +61,9 @@ void tanks_rand_place(Map *map) {
         map->tank[i].y = (rand() % 6) * 100 + 20 + 50 + (rand() % 10);
         map->tank[i].angle = (rand() % 360) * pi / 180;
         map->tank[i].is_alive = 1;
+        for (int j = 0; j < 6; ++j) {
+            map->tank[i].bullet[j].is_fired = 0;
+        }
     }
 }
 

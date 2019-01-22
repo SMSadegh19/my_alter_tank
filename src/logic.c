@@ -209,6 +209,7 @@ void bullet_collid_tank(Bullet *bullet, Map *map) {
                 bullet->is_fired = 0;
                 add_score(map);
                 if (is_two_dead(map)) {
+                    generate_map(map);
                     zero_key_pressed(map);
                     tanks_rand_place(map);
                 }
