@@ -18,8 +18,7 @@ int main() {
     game_map.walls = malloc(sizeof(Wall) * 100);
     initialize_game_values(&game_map);
     init_window();
-    int s_continue = 1;//to realize should continue or no??
-    while(s_continue) {
+    while(1) {
         render_clear();
         if (game_map.game_pause == 0) {
             draw_shapes(&game_map);
@@ -35,8 +34,8 @@ int main() {
         if (event_handling(&game_map) == EXIT) break;
         if (game_map.game_pause == 0) {
             game_map.frames++;
-            if (game_map.frames % 400 == 0) {
-                //setting a powerup in page
+            if (game_map.frames % 50 == 0) {
+                set_a_powerup(&game_map);
             }
         }
         present_window();

@@ -31,7 +31,9 @@ typedef struct {
     int color[3];
     double angle;
     int is_alive;
-    int key_pressed[4];//0 : backward //1 : forward //2 : right_turn //3 : left_turn
+    int powered_up;
+    int frag_section;//0:No frag Bomb ** 1:Has Frag ** 2:Released
+    int key_pressed[4];//0 : backward ** 1 : forward ** 2 : right_turn ** 3 : left_turn
     Bullet bullet[6];
 } Tank;
 
@@ -48,6 +50,7 @@ typedef struct {
     int first_menu;
     int number_of_walls;
     long long int frames;
+    Powerup powerup[5];
     Tank tank[3];
     Wall *walls;
 } Map;

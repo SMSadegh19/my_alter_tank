@@ -19,6 +19,7 @@ extern int FPS;
 void initialize_game_values(Map *map);
 void zero_key_pressed(Map *map);
 void tanks_rand_place(Map *map);
+void powerup_rand_place(Powerup *powerup);
 //SDL presents
 void init_window();
 void render_clear();
@@ -35,6 +36,7 @@ void draw_tank_gun(Tank *tank);
 void draw_bullet(Bullet *bullet);
 void draw_walls(Map *map);
 void draw_wall(Wall *wall);
+void draw_powerup(Powerup *powerup);
 //Event handling
 int event_handling(Map *map);
 

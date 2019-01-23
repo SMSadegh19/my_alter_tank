@@ -64,10 +64,21 @@ void tanks_rand_place(Map *map) {
         map->tank[i].y = (rand() % 6) * 100 + 20 + 50 + (rand() % 10);
         map->tank[i].angle = (rand() % 360) * pi / 180;
         map->tank[i].is_alive = 1;
+        map->tank[i].powered_up = 0;
+        map->tank[i].frag_section = 0;
         for (int j = 0; j < 6; ++j) {
             map->tank[i].bullet[j].is_fired = 0;
         }
     }
+    for (int i = 0; i < 5; ++i) {
+        map->powerup[i].is_on = 0;
+    }
+}
+
+void powerup_rand_place(Powerup *powerup) {
+    srand((unsigned int)(time(NULL)));
+    powerup->x = (rand() % 11) * 100 + 20 + 50 + (rand() % 30) - 15;
+    powerup->y = (rand() % 6) * 100 + 20 + 50 + (rand() % 30) - 15;
 }
 
 void init_window() {
@@ -143,6 +154,11 @@ void draw_button(char *string, int x, int y, int a, int b, int NUMBER, int alpha
 
 void draw_shapes(Map *map) {
     draw_walls(map);
+    for (int i = 0; i < 5; ++i) {
+        if (map->powerup[i].is_on) {
+            draw_powerup(&(map->powerup[i]));
+        }
+    }
     for (int i = 0; i < 3; ++i) {
         if (map->tank[i].is_alive) {
             draw_tank(&(map->tank[i]));
@@ -154,6 +170,15 @@ void draw_shapes(Map *map) {
         }
     }
     draw_scores(map);
+}
+
+void draw_powerup(Powerup *powerup) {
+    boxRGBA(renderer, powerup->x - 10, powerup->y - 10, powerup->x + 10, powerup->y + 10, 140, 140, 140, 255);
+    switch (powerup->type) {
+        case 0:
+            filledCircleRGBA(renderer, powerup->x, powerup->y, 7, 15, 15, 15, 200);
+            break;
+    }
 }
 
 char *convert_number_to_string(int number) {
