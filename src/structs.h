@@ -6,6 +6,16 @@
 #define TANK_STRUCTS_H
 
 typedef struct {
+    int x;
+    int y;
+    //0: Frag Bomb ** 1: Mine ** 2: Laser ** 3: SlowMotion ** 4: Freeze
+    int type;
+    //0: All will have this ** 1:For others ** 2:Just for you
+    int use_by;
+    int is_on;
+} Powerup;
+
+typedef struct {
     int in_wall;
     int x;
     int y;
@@ -37,6 +47,7 @@ typedef struct {
     int game_pause;
     int first_menu;
     int number_of_walls;
+    long long int frames;
     Tank tank[3];
     Wall *walls;
 } Map;

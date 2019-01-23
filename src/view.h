@@ -13,6 +13,7 @@ extern const double pi;
 extern int EXIT;
 extern int tank_radius;
 extern int is_selected;
+extern int FPS;
 
 //initializing functions
 void initialize_game_values(Map *map);

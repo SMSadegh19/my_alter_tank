@@ -16,6 +16,7 @@
 const double pi = 3.14159265358979323846264338327950288419716939937510;
 int EXIT = 10000;
 int is_selected;
+int FPS;
 
 SDL_Window *window;
 SDL_Renderer *renderer;
@@ -24,7 +25,9 @@ int x_max = 11 * 100 + 50;
 int y_max = 6 * 100 + 100;
 
 void initialize_game_values(Map *map) {
+    FPS = 30;
     is_selected = 0;
+    map->frames = 0;
     map->game_pause = 1;
     map->first_menu = 1;
     srand((unsigned int)(time(NULL)));
@@ -84,7 +87,7 @@ void render_clear() {
 
 void present_window() {
     SDL_RenderPresent(renderer);
-    SDL_Delay(30);
+    SDL_Delay(FPS);
 }
 
 void quit_window() {
