@@ -15,5 +15,9 @@ void add_score(Map *map);
 int is_two_dead(Map *map);
 void bullet_collid_tank(Bullet *bullet, Map *map);
 void bullet_collid_wall(Bullet *bullet, Map *map);
+//powerups
+void power_in_myplace(Tank *tank, Powerup *powerup);
+void get_powerup(Map *map, Tank *tank);
+void set_a_powerup(Map *map);
 
 #endif //TANK_LOGIC_H

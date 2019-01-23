@@ -219,6 +219,38 @@ void bullet_collid_tank(Bullet *bullet, Map *map) {
     }
 }
 
+void power_in_myplace(Tank *tank, Powerup *powerup) {
+    if (pow_2(tank->x - powerup->x) + pow_2(tank->y - powerup->y) < pow_2(tank_radius + 10)) {
+        powerup->is_on = 0;
+        if (powerup->type < 3) {
+            tank->powered_up = 1;
+        }
+        switch (powerup->type) {
+            case 0:
+                tank->frag_section = 1;
+                break;
+        }
+    }
+}
+
+void get_powerup(Map *map, Tank *tank) {
+    if (tank->is_alive == 0) {
+        return;
+    }
+    for (int i = 0; i < 5; ++i) {
+        Powerup *p_power = &(map->powerup[i]);
+        if (p_power->is_on) {
+            if (p_power->type < 3) {
+                if (tank->powered_up == 0) {
+                    power_in_myplace(tank, p_power);
+                }
+            } else {
+                power_in_myplace(tank, p_power);
+            }
+        }
+    }
+}
+
 int in_Wall(Bullet *bullet, Map *map, Wall **pwall) {
     for (int i = 0; i < map->number_of_walls; ++i) {
         Wall *wally = &(map->walls[i]);
@@ -257,4 +289,21 @@ void bullet_collid_wall(Bullet *bullet, Map *map) {
             bullet->in_wall = 0;
         }
     }
+}
+
+void set_a_powerup(Map *map) {
+    srand((unsigned int)(time(NULL)));
+    int i;
+    for (i = 0; i < 5; ++i) {
+        if (map->powerup[i].is_on == 0) {
+            map->powerup[i].is_on = 1;
+            break;
+        }
+    }
+    if (i == 5) {
+        return;
+    }
+    map->powerup[i].type = 0;//now just Frag Bomb
+    map->powerup[i].use_by = 0;//now for ALL
+    powerup_rand_place(&(map->powerup[i]));
 }

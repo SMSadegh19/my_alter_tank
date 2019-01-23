@@ -36,6 +36,7 @@ void move_tank(Map *map) {
         if (map->tank[i].key_pressed[1]) {
             go_forward(&(map->tank[i]), map);
         }
+        get_powerup(map, &(map->tank[i]));
     }
 }
 
