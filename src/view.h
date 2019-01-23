@@ -37,6 +37,7 @@ void draw_bullet(Bullet *bullet);
 void draw_walls(Map *map);
 void draw_wall(Wall *wall);
 void draw_powerup(Powerup *powerup);
+void draw_bomb(Bullet *bullet);
 //Event handling
 int event_handling(Map *map);
 

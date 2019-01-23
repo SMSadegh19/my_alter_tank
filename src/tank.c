@@ -34,7 +34,7 @@ int main() {
         if (event_handling(&game_map) == EXIT) break;
         if (game_map.game_pause == 0) {
             game_map.frames++;
-            if (game_map.frames % 100 == 0) {
+            if (game_map.frames % 400 == 0) {
                 set_a_powerup(&game_map);
             }
         }

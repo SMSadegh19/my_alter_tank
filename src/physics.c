@@ -14,6 +14,18 @@ void bullets_moving(Map *map) {
                 move_bullet(&(map->tank[i].bullet[j]), map);
             }
         }
+        if (map->tank[i].fragBomb.is_released) {
+            Bullet *purpose = &(map->tank[i].fragBomb.bullet[0]);
+            if (purpose->is_fired) {
+                move_bullet(purpose, map);
+            }
+        }
+        for (int j = 1; j < 9; ++j) {
+            Bullet *purpose = &(map->tank[i].fragBomb.bullet[j]);
+            if (purpose->is_fired) {
+                move_bullet(purpose, map);
+            }
+        }
     }
 }
 
@@ -70,13 +82,45 @@ void turn_tank(Map *map) {
 }
 
 void fire(Tank *tank) {
+    if (tank->frag_section == 2) {
+
+        tank->fragBomb.is_released = 0;
+        tank->fragBomb.bullet[0].is_fired = 0;
+        for (int i = 1; i < 9; ++i) {
+            Bullet *purpose = &(tank->fragBomb.bullet[i]);
+            Bullet *refrence = &(tank->fragBomb.bullet[0]);
+            purpose->remained_life = 100;
+            purpose->x = refrence->x;
+            purpose->y = refrence->y;
+            purpose->angle = (i - 1) * (pi / 4);
+            purpose->is_fired = 1;
+            purpose->in_wall = 0;
+        }
+        //explode it
+        tank->frag_section = 0;
+        tank->powered_up = 0;
+        return;
+    }
     if (tank->is_alive == 0) {
+        return;
+    }
+    if (tank->frag_section == 1) {
+        //code for when remained life to 0
+        tank->fragBomb.bullet[0].remained_life = 1000;
+        tank->fragBomb.bullet[0].x = tank->x + (int) ((tank_radius + 3) * cos(tank->angle));
+        tank->fragBomb.bullet[0].y = tank->y + (int) ((tank_radius + 3) * sin(tank->angle));
+        tank->fragBomb.bullet[0].angle = tank->angle;
+        tank->fragBomb.bullet[0].is_fired = 1;
+        tank->fragBomb.bullet[0].in_wall = 0;
+        tank->fragBomb.is_released = 1;
+        //release it
+        tank->frag_section = 2;
         return;
     }
     for (int i = 0; i < 6; ++i) {
         if (tank->bullet[i].is_fired == 0) {
             //initializing bullet
-            tank->bullet[i].remained_life = 100;
+            tank->bullet[i].remained_life = 250;
             tank->bullet[i].x = tank->x + (int) ((tank_radius + 3) * cos(tank->angle));
             tank->bullet[i].y = tank->y + (int) ((tank_radius + 3) * sin(tank->angle));
             tank->bullet[i].angle = tank->angle;

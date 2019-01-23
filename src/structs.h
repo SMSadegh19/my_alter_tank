@@ -25,6 +25,11 @@ typedef struct {
 } Bullet;
 
 typedef struct {
+    int is_released;
+    Bullet bullet[9];
+} FragBomb;
+
+typedef struct {
     int x;
     int y;
     int score;
@@ -34,6 +39,7 @@ typedef struct {
     int powered_up;
     int frag_section;//0:No frag Bomb ** 1:Has Frag ** 2:Released
     int key_pressed[4];//0 : backward ** 1 : forward ** 2 : right_turn ** 3 : left_turn
+    FragBomb fragBomb;
     Bullet bullet[6];
 } Tank;
 

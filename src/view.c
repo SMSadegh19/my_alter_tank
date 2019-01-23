@@ -73,6 +73,12 @@ void tanks_rand_place(Map *map) {
     for (int i = 0; i < 5; ++i) {
         map->powerup[i].is_on = 0;
     }
+    for (int i = 0; i < 3; ++i) {
+        map->tank[i].fragBomb.is_released = 0;
+        for (int j = 0; j < 9; ++j) {
+            map->tank[i].fragBomb.bullet[j].is_fired = 0;
+        }
+    }
 }
 
 void powerup_rand_place(Powerup *powerup) {
@@ -163,9 +169,25 @@ void draw_shapes(Map *map) {
         if (map->tank[i].is_alive) {
             draw_tank(&(map->tank[i]));
         }
+        if (map->tank[i].fragBomb.bullet[0].is_fired == 0) {
+            map->tank[i].fragBomb.is_released = 0;
+            if (map->tank[i].frag_section == 2) {
+                map->tank[i].frag_section = 0;
+                map->tank[i].powered_up = 0;
+            }
+        }
+        if (map->tank[i].fragBomb.is_released) {
+            draw_bomb(&(map->tank[i].fragBomb.bullet[0]));
+        }
         for (int j = 0; j < 6; ++j) {
             if (map->tank[i].bullet[j].is_fired) {
                 draw_bullet(&(map->tank[i].bullet[j]));
+            }
+        }
+        for (int j = 1; j < 9; ++j) {
+            Bullet *purpose = &(map->tank[i].fragBomb.bullet[j]);
+            if (purpose->is_fired) {
+                draw_bullet(purpose);
             }
         }
     }
@@ -227,6 +249,10 @@ void draw_tank(Tank *tank) {
 
 void draw_bullet(Bullet *bullet) {
     filledCircleRGBA(renderer, bullet->x, bullet->y, 3, 20, 20, 20, 255);
+}
+
+void draw_bomb(Bullet *bullet) {
+    filledCircleRGBA(renderer, bullet->x, bullet->y, 5, 20, 20, 20, 255);
 }
 
 void draw_tank_gun(Tank *tank) {
