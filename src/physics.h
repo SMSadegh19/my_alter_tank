@@ -12,7 +12,8 @@ void move_tank(Map *map);
 void go_forward(Tank *tank, Map *map);
 void go_backward(Tank *tank, Map *map);
 void turn_tank(Map *map);
-void fire(Tank *tank);
+void plant_a_mine(Tank *tank, Map *map);
+void fire(Tank *tank, Map *map);
 void bullets_moving(Map *map);
 void move_bullet(Bullet *bullet, Map *map);
 

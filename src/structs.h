@@ -8,6 +8,15 @@
 typedef struct {
     int x;
     int y;
+    int is_planted;
+    int frame_from_born;
+    int is_in_range;
+    int frame_from_in_range;
+} Mine;
+
+typedef struct {
+    int x;
+    int y;
     //0: Frag Bomb ** 1: Mine ** 2: Laser ** 3: SlowMotion ** 4: Freeze
     int type;
     //0: All will have this ** 1:For others ** 2:Just for you
@@ -38,6 +47,7 @@ typedef struct {
     int is_alive;
     int powered_up;
     int frag_section;//0:No frag Bomb ** 1:Has Frag ** 2:Released
+    int have_mine;
     int key_pressed[4];//0 : backward ** 1 : forward ** 2 : right_turn ** 3 : left_turn
     FragBomb fragBomb;
     Bullet bullet[6];
@@ -57,6 +67,7 @@ typedef struct {
     int number_of_walls;
     long long int frames;
     Powerup powerup[5];
+    Mine mine[15];
     Tank tank[3];
     Wall *walls;
 } Map;

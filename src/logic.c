@@ -205,17 +205,21 @@ void bullet_collid_tank(Bullet *bullet, Map *map) {
         Tank *tank = &(map->tank[i]);
         if (tank->is_alive) {
             if (pow_2(bullet->x - tank->x) + pow_2(bullet->y - tank->y) < pow_2(tank_radius)) {
-                tank->is_alive = 0;
                 bullet->is_fired = 0;
-                add_score(map);
-                if (is_two_dead(map)) {
-                    generate_map(map);
-                    zero_key_pressed(map);
-                    tanks_rand_place(map);
-                }
+                kill_tank(map, tank);
                 return;
             }
         }
+    }
+}
+
+void kill_tank(Map *map, Tank *tank) {
+    tank->is_alive = 0;
+    add_score(map);
+    if (is_two_dead(map)) {
+        generate_map(map);
+        zero_key_pressed(map);
+        tanks_rand_place(map);
     }
 }
 
@@ -228,6 +232,9 @@ void power_in_myplace(Tank *tank, Powerup *powerup) {
         switch (powerup->type) {
             case 0:
                 tank->frag_section = 1;
+                break;
+            case 1:
+                tank->have_mine = 1;
                 break;
         }
     }
@@ -303,7 +310,19 @@ void set_a_powerup(Map *map) {
     if (i == 5) {
         return;
     }
-    map->powerup[i].type = 0;//now just Frag Bomb
+    map->powerup[i].type = rand() % 2;//now just Frag Bomb and Mine
     map->powerup[i].use_by = 0;//now for ALL
     powerup_rand_place(&(map->powerup[i]));
+}
+
+void tank_on_mine_range(Map *map, Tank *tank, Mine *mine, int to_destroy) {
+    if (pow_2(tank->x - mine->x) + pow_2(tank->y - mine->y) < pow_2(2 * tank_radius)) {
+        if (mine->is_in_range == 0) {
+            mine->frame_from_in_range = 0;
+        }
+        mine->is_in_range = 1;
+        if (to_destroy) {
+            kill_tank(map, tank);
+        }
+    }
 }

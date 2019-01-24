@@ -39,6 +39,7 @@ void draw_walls(Map *map);
 void draw_wall(Wall *wall);
 void draw_powerup(Powerup *powerup);
 void draw_bomb(Bullet *bullet);
+void draw_mine(Mine *mine);
 //Event handling
 int event_handling(Map *map);
 

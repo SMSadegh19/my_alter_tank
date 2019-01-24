@@ -68,6 +68,7 @@ void tanks_rand_place(Map *map) {
         map->tank[i].is_alive = 1;
         map->tank[i].powered_up = 0;
         map->tank[i].frag_section = 0;
+        map->tank[i].have_mine = 0;
         for (int j = 0; j < 6; ++j) {
             map->tank[i].bullet[j].is_fired = 0;
         }
@@ -80,6 +81,12 @@ void tanks_rand_place(Map *map) {
         for (int j = 0; j < 9; ++j) {
             map->tank[i].fragBomb.bullet[j].is_fired = 0;
         }
+    }
+    for (int i = 0; i < 15; ++i) {
+        map->mine[i].is_planted = 0;
+        map->mine[i].frame_from_born = 0;
+        map->mine[i].is_in_range = 0;
+        map->mine[i].frame_from_in_range = 0;
     }
 }
 
@@ -174,6 +181,12 @@ void draw_button(char *string, int x, int y, int a, int b, int NUMBER, int alpha
 
 void draw_shapes(Map *map) {
     draw_walls(map);
+    for (int i = 0; i < 15; ++i) {
+        Mine *purpose = &(map->mine[i]);
+        if (purpose->is_planted && (purpose->frame_from_born < 60 || purpose->is_in_range) ) {
+            draw_mine(purpose);
+        }
+    }
     for (int i = 0; i < 5; ++i) {
         if (map->powerup[i].is_on) {
             draw_powerup(&(map->powerup[i]));
@@ -213,6 +226,10 @@ void draw_powerup(Powerup *powerup) {
     switch (powerup->type) {
         case 0:
             filledCircleRGBA(renderer, powerup->x, powerup->y, 7, 15, 15, 15, 200);
+            break;
+        case 1:
+            //can better font?
+            stringRGBA(renderer, powerup->x - 4, powerup->y - 4, "M", 255, 0, 0, 255);
             break;
     }
 }
@@ -267,6 +284,10 @@ void draw_bullet(Bullet *bullet) {
 
 void draw_bomb(Bullet *bullet) {
     filledCircleRGBA(renderer, bullet->x, bullet->y, 5, 20, 20, 20, 255);
+}
+
+void draw_mine(Mine *mine) {
+    filledCircleRGBA(renderer, mine->x, mine->y, 10, 0, 0, 0, 255);
 }
 
 void draw_tank_gun(Tank *tank) {
@@ -345,7 +366,7 @@ int event_handling(Map *map) {
                         map->tank[0].key_pressed[3] = 0;
                         break;
                     case SDLK_m:
-                        fire(&(map->tank[0]));
+                        fire(&(map->tank[0]), map);
                         break;
                         //tank1
                     case SDLK_d:
@@ -361,7 +382,7 @@ int event_handling(Map *map) {
                         map->tank[1].key_pressed[3] = 0;
                         break;
                     case SDLK_q:
-                        fire(&(map->tank[1]));
+                        fire(&(map->tank[1]), map);
                         break;
                         //tank2
                     case SDLK_KP_5:
@@ -377,7 +398,7 @@ int event_handling(Map *map) {
                         map->tank[2].key_pressed[3] = 0;
                         break;
                     case SDLK_KP_0:
-                        fire(&(map->tank[2]));
+                        fire(&(map->tank[2]), map);
                         break;
                 }
             }

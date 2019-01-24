@@ -40,15 +40,26 @@ void move_bullet(Bullet *bullet, Map *map) {
     }
 }
 
+
+
 void move_tank(Map *map) {
     for (int i = 0; i < 3; ++i) {
-        if (map->tank[i].key_pressed[0]) {
-            go_backward(&(map->tank[i]), map);
+        Tank *p_tank = &(map->tank[i]);
+        if (p_tank->is_alive) {
+            if (p_tank->key_pressed[0]) {
+                go_backward(p_tank, map);
+            }
+            if (p_tank->key_pressed[1]) {
+                go_forward(p_tank, map);
+            }
+            for (int j = 0; j < 15; ++j) {
+                Mine *purpose = &(map->mine[j]);
+                if (purpose->is_planted && purpose->frame_from_born > 80) {
+                    tank_on_mine_range(map, p_tank, purpose, 0);
+                }
+            }
+            get_powerup(map, &(map->tank[i]));
         }
-        if (map->tank[i].key_pressed[1]) {
-            go_forward(&(map->tank[i]), map);
-        }
-        get_powerup(map, &(map->tank[i]));
     }
 }
 
@@ -81,7 +92,32 @@ void turn_tank(Map *map) {
     }
 }
 
-void fire(Tank *tank) {
+void plant_a_mine(Tank *tank, Map *map) {
+    int i;
+    for (i = 0; i < 15; ++i) {
+        if (map->mine[i].is_planted == 0) {
+            break;
+        }
+    }
+    if (i == 15) {
+        return;
+    }
+    Mine *purpose = &(map->mine[i]);
+    purpose->is_planted = 1;
+    purpose->frame_from_born = 0;
+    purpose->is_in_range = 0;
+    purpose->frame_from_in_range = 0;
+    purpose->x = tank->x;
+    purpose->y = tank->y;
+}
+
+void fire(Tank *tank, Map *map) {
+    if (tank->have_mine) {
+        tank->have_mine = 0;
+        tank->powered_up = 0;
+        plant_a_mine(tank, map);
+        return;
+    }
     if (tank->frag_section == 2) {
         tank->fragBomb.is_released = 0;
         tank->fragBomb.bullet[0].is_fired = 0;
