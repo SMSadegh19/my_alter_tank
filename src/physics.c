@@ -83,7 +83,6 @@ void turn_tank(Map *map) {
 
 void fire(Tank *tank) {
     if (tank->frag_section == 2) {
-
         tank->fragBomb.is_released = 0;
         tank->fragBomb.bullet[0].is_fired = 0;
         for (int i = 1; i < 9; ++i) {
@@ -92,7 +91,7 @@ void fire(Tank *tank) {
             purpose->remained_life = 100;
             purpose->x = refrence->x;
             purpose->y = refrence->y;
-            purpose->angle = (i - 1) * (pi / 4);
+            purpose->angle = (i - 1) * (pi / 4) + (pi / 9);
             purpose->is_fired = 1;
             purpose->in_wall = 0;
         }
@@ -105,7 +104,7 @@ void fire(Tank *tank) {
         return;
     }
     if (tank->frag_section == 1) {
-        //code for when remained life to 0
+        //code for when remained life to 0 . I think is OK
         tank->fragBomb.bullet[0].remained_life = 1000;
         tank->fragBomb.bullet[0].x = tank->x + (int) ((tank_radius + 3) * cos(tank->angle));
         tank->fragBomb.bullet[0].y = tank->y + (int) ((tank_radius + 3) * sin(tank->angle));

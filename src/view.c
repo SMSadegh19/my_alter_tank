@@ -20,6 +20,8 @@ int FPS;
 
 SDL_Window *window;
 SDL_Renderer *renderer;
+SDL_Surface *imageSurface = NULL;
+SDL_Surface *windowSurfae;
 int tank_radius = 18;
 int x_max = 11 * 100 + 50;
 int y_max = 6 * 100 + 100;
@@ -104,6 +106,8 @@ void render_clear() {
 
 void present_window() {
     SDL_RenderPresent(renderer);
+//    SDL_UpdateWindowSurface(window);
+//    SDL_BlitSurface(imageSurface, NULL, windowSurfae, NULL);
     SDL_Delay(FPS);
 }
 
@@ -116,6 +120,16 @@ void draw_first_menu() {
     draw_button("NEW GAME", x_max / 2, 1 * first_y, 200, 100, 0, 255);
     draw_button("LOAD GAME", x_max / 2, 2 * first_y, 200, 100, 1, 255);
     draw_button("QUIT", x_max / 2, 3 * first_y, 200, 100, 2, 255);
+}
+
+void draw_background() {
+    windowSurfae = SDL_GetWindowSurface(window);
+    imageSurface = SDL_LoadBMP("test.bmp");
+    if (imageSurface == NULL) {
+        printf("Error :%s\n", SDL_GetError());
+    } else {
+        printf("OK\n");
+    }
 }
 
 void draw_game_menu() {

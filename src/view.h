@@ -26,6 +26,7 @@ void render_clear();
 void present_window();
 void quit_window();
 //Drawings
+void draw_background();
 void draw_shapes(Map *map);
 void draw_scores(Map *map);
 void draw_first_menu();

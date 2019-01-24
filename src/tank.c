@@ -18,6 +18,7 @@ int main() {
     game_map.walls = malloc(sizeof(Wall) * 100);
     initialize_game_values(&game_map);
     init_window();
+//    draw_background();
     while(1) {
         render_clear();
         if (game_map.game_pause == 0) {
