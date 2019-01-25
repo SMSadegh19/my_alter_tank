@@ -112,7 +112,7 @@ void plant_a_mine(Tank *tank, Map *map) {
 }
 
 void fire(Tank *tank, Map *map) {
-    if (tank->have_mine) {
+    if (tank->is_alive && tank->have_mine) {
         tank->have_mine = 0;
         tank->powered_up = 0;
         plant_a_mine(tank, map);

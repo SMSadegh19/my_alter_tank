@@ -15,6 +15,7 @@ void add_score(Map *map);
 int is_two_dead(Map *map);
 void bullet_collid_tank(Bullet *bullet, Map *map);
 void bullet_collid_wall(Bullet *bullet, Map *map);
+void mine_features_controlling(Map *map);
 void tank_on_mine_range(Map *map, Tank *tank, Mine *mine, int to_destroy);
 void kill_tank(Map *map, Tank *tank);
 //powerups

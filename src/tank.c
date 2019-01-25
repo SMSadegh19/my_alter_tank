@@ -34,30 +34,9 @@ int main() {
         }
         if (event_handling(&game_map) == EXIT) break;
         if (game_map.game_pause == 0) {
-            for (int i = 0; i < 15; ++i) {
-                Mine *purpose = &(game_map.mine[i]);
-                if (purpose->is_planted) {
-                    purpose->frame_from_born++;
-                }
-                if (purpose->is_in_range) {
-                    purpose->frame_from_in_range++;
-                    if (purpose->frame_from_in_range > 10) {
-                        purpose->is_planted = 0;
-                        purpose->frame_from_born = 0;
-                        purpose->is_in_range = 0;
-                        purpose->frame_from_in_range = 0;
-                        //destroy around area
-                        for (int j = 0; j < 3; ++j) {
-                            Tank *p_tank = &(game_map.tank[j]);
-                            if (p_tank->is_alive) {
-                                tank_on_mine_range(&game_map, p_tank, purpose, 1);
-                            }
-                        }
-                    }
-                }
-            }
+            mine_features_controlling(&game_map);
             game_map.frames++;
-            if (game_map.frames % 50 == 0) {
+            if (game_map.frames % 200 == 0) {
                 set_a_powerup(&game_map);
             }
         }

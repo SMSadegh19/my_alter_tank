@@ -315,6 +315,31 @@ void set_a_powerup(Map *map) {
     powerup_rand_place(&(map->powerup[i]));
 }
 
+void mine_features_controlling(Map *map) {
+    for (int i = 0; i < 15; ++i) {
+        Mine *purpose = &(map->mine[i]);
+        if (purpose->is_planted) {
+            purpose->frame_from_born++;
+        }
+        if (purpose->is_in_range) {
+            purpose->frame_from_in_range++;
+            if (purpose->frame_from_in_range > 10) {
+                purpose->is_planted = 0;
+                purpose->frame_from_born = 0;
+                purpose->is_in_range = 0;
+                purpose->frame_from_in_range = 0;
+                //destroy around area
+                for (int j = 0; j < 3; ++j) {
+                    Tank *p_tank = &(map->tank[j]);
+                    if (p_tank->is_alive) {
+                        tank_on_mine_range(map, p_tank, purpose, 1);
+                    }
+                }
+            }
+        }
+    }
+}
+
 void tank_on_mine_range(Map *map, Tank *tank, Mine *mine, int to_destroy) {
     if (pow_2(tank->x - mine->x) + pow_2(tank->y - mine->y) < pow_2(2 * tank_radius)) {
         if (mine->is_in_range == 0) {

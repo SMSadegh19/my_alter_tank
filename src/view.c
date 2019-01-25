@@ -27,7 +27,7 @@ int x_max = 11 * 100 + 50;
 int y_max = 6 * 100 + 100;
 
 void initialize_game_values(Map *map) {
-    FPS = 30;
+    FPS = 33;
     is_selected = 0;
     map->frames = 0;
     map->game_pause = 1;
@@ -60,6 +60,7 @@ void zero_key_pressed(Map *map) {
 }
 
 void tanks_rand_place(Map *map) {
+    FPS = 33;
     srand((unsigned int)(time(NULL)));
     for (int i = 0; i < 3; ++i) {
         map->tank[i].x = (rand() % 11) * 100 + 20 + 50 + (rand() % 10);
@@ -115,7 +116,7 @@ void present_window() {
     SDL_RenderPresent(renderer);
 //    SDL_UpdateWindowSurface(window);
 //    SDL_BlitSurface(imageSurface, NULL, windowSurfae, NULL);
-    SDL_Delay(FPS);
+    SDL_Delay(1000 / FPS);
 }
 
 void quit_window() {
