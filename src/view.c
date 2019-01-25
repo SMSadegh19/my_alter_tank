@@ -186,6 +186,9 @@ void draw_shapes(Map *map) {
         Mine *purpose = &(map->mine[i]);
         if (purpose->is_planted && (purpose->frame_from_born < 60 || purpose->is_in_range) ) {
             draw_mine(purpose);
+            if (purpose->frame_from_born > 80 && purpose->is_in_range) {
+                filledCircleRGBA(renderer, purpose->x, purpose->y, 2 * tank_radius, 255, 0, 255, 160);
+            }
         }
     }
     for (int i = 0; i < 5; ++i) {

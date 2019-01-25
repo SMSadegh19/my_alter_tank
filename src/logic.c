@@ -323,7 +323,7 @@ void mine_features_controlling(Map *map) {
         }
         if (purpose->is_in_range) {
             purpose->frame_from_in_range++;
-            if (purpose->frame_from_in_range > 10) {
+            if (purpose->frame_from_in_range > 9) {
                 purpose->is_planted = 0;
                 purpose->frame_from_born = 0;
                 purpose->is_in_range = 0;

@@ -36,7 +36,7 @@ int main() {
         if (game_map.game_pause == 0) {
             mine_features_controlling(&game_map);
             game_map.frames++;
-            if (game_map.frames % 200 == 0) {
+            if (game_map.frames % 250 == 0) {
                 set_a_powerup(&game_map);
             }
         }
