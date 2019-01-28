@@ -5,23 +5,58 @@ CMakeFiles/tank.dir/src/logic.c.o
  /home/sadegh/tank/src/logic.c
  /home/sadegh/tank/src/logic.h
  /home/sadegh/tank/src/physics.h
+ /home/sadegh/tank/src/playwav.h
  /home/sadegh/tank/src/structs.h
  /home/sadegh/tank/src/view.h
 CMakeFiles/tank.dir/src/physics.c.o
  /home/sadegh/tank/src/logic.h
  /home/sadegh/tank/src/physics.c
  /home/sadegh/tank/src/physics.h
+ /home/sadegh/tank/src/playwav.h
  /home/sadegh/tank/src/structs.h
  /home/sadegh/tank/src/view.h
+CMakeFiles/tank.dir/src/playwav.c.o
+ /home/sadegh/tank/src/logic.h
+ /home/sadegh/tank/src/physics.h
+ /home/sadegh/tank/src/playwav.c
+ /home/sadegh/tank/src/playwav.h
+ /home/sadegh/tank/src/structs.h
+ /home/sadegh/tank/src/view.h
+ /usr/include/SDL2/SDL_atomic.h
+ /usr/include/SDL2/SDL_audio.h
+ /usr/include/SDL2/SDL_config.h
+ /usr/include/SDL2/SDL_endian.h
+ /usr/include/SDL2/SDL_error.h
+ /usr/include/SDL2/SDL_mutex.h
+ /usr/include/SDL2/SDL_platform.h
+ /usr/include/SDL2/SDL_rwops.h
+ /usr/include/SDL2/SDL_stdinc.h
+ /usr/include/SDL2/SDL_thread.h
+ /usr/include/SDL2/begin_code.h
+ /usr/include/SDL2/close_code.h
 CMakeFiles/tank.dir/src/tank.c.o
  /home/sadegh/tank/src/logic.h
  /home/sadegh/tank/src/physics.h
+ /home/sadegh/tank/src/playwav.h
  /home/sadegh/tank/src/structs.h
  /home/sadegh/tank/src/tank.c
  /home/sadegh/tank/src/view.h
+ /usr/include/SDL2/SDL_atomic.h
+ /usr/include/SDL2/SDL_audio.h
+ /usr/include/SDL2/SDL_config.h
+ /usr/include/SDL2/SDL_endian.h
+ /usr/include/SDL2/SDL_error.h
+ /usr/include/SDL2/SDL_mutex.h
+ /usr/include/SDL2/SDL_platform.h
+ /usr/include/SDL2/SDL_rwops.h
+ /usr/include/SDL2/SDL_stdinc.h
+ /usr/include/SDL2/SDL_thread.h
+ /usr/include/SDL2/begin_code.h
+ /usr/include/SDL2/close_code.h
 CMakeFiles/tank.dir/src/view.c.o
  /home/sadegh/tank/src/logic.h
  /home/sadegh/tank/src/physics.h
+ /home/sadegh/tank/src/playwav.h
  /home/sadegh/tank/src/structs.h
  /home/sadegh/tank/src/view.c
  /home/sadegh/tank/src/view.h

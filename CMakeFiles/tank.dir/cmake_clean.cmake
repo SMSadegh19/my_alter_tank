@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/tank.dir/src/logic.c.o"
   "CMakeFiles/tank.dir/src/physics.c.o"
+  "CMakeFiles/tank.dir/src/playwav.c.o"
   "CMakeFiles/tank.dir/src/tank.c.o"
   "CMakeFiles/tank.dir/src/view.c.o"
   "tank.pdb"

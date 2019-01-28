@@ -177,6 +177,33 @@ src/physics.c.s:
 	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/physics.c.s
 .PHONY : src/physics.c.s
 
+src/playwav.o: src/playwav.c.o
+
+.PHONY : src/playwav.o
+
+# target to build an object file
+src/playwav.c.o:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/playwav.c.o
+.PHONY : src/playwav.c.o
+
+src/playwav.i: src/playwav.c.i
+
+.PHONY : src/playwav.i
+
+# target to preprocess a source file
+src/playwav.c.i:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/playwav.c.i
+.PHONY : src/playwav.c.i
+
+src/playwav.s: src/playwav.c.s
+
+.PHONY : src/playwav.s
+
+# target to generate assembly for a file
+src/playwav.c.s:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/playwav.c.s
+.PHONY : src/playwav.c.s
+
 src/tank.o: src/tank.c.o
 
 .PHONY : src/tank.o
@@ -246,6 +273,9 @@ help:
 	@echo "... src/physics.o"
 	@echo "... src/physics.i"
 	@echo "... src/physics.s"
+	@echo "... src/playwav.o"
+	@echo "... src/playwav.i"
+	@echo "... src/playwav.s"
 	@echo "... src/tank.o"
 	@echo "... src/tank.i"
 	@echo "... src/tank.s"

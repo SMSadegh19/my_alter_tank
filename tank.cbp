@@ -82,6 +82,12 @@
 		<Unit filename="/home/sadegh/tank/src/physics.h">
 			<Option target="tank"/>
 		</Unit>
+		<Unit filename="/home/sadegh/tank/src/playwav.c">
+			<Option target="tank"/>
+		</Unit>
+		<Unit filename="/home/sadegh/tank/src/playwav.h">
+			<Option target="tank"/>
+		</Unit>
 		<Unit filename="/home/sadegh/tank/src/structs.h">
 			<Option target="tank"/>
 		</Unit>

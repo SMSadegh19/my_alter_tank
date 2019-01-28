@@ -7,10 +7,12 @@
 #include <math.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
+#include <SDL_audio.h>
 #include "structs.h"
 #include "view.h"
 #include "physics.h"
 #include "logic.h"
+#include "playwav.h"
 
 Map game_map;
 

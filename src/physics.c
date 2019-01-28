@@ -6,6 +6,7 @@
 #include "structs.h"
 #include "logic.h"
 #include <math.h>
+#include "playwav.h"
 
 void bullets_moving(Map *map) {
     for (int i = 0; i < 3; ++i) {

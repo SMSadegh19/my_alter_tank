@@ -12,6 +12,7 @@
 #include "view.h"
 #include "physics.h"
 #include "logic.h"
+#include "playwav.h"
 
 int vertex[12][7];
 int dx[4] = {0, 0, 1, -1};

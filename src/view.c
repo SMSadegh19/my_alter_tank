@@ -6,6 +6,7 @@
 #include "structs.h"
 #include "logic.h"
 #include "physics.h"
+#include "playwav.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -27,7 +28,6 @@ int x_max = 11 * 100 + 50;
 int y_max = 6 * 100 + 100;
 
 void initialize_game_values(Map *map) {
-    FPS = 33;
     is_selected = 0;
     map->frames = 0;
     map->game_pause = 1;
@@ -420,6 +420,7 @@ int event_handling(Map *map) {
                     case SDLK_ESCAPE:
                         if (map->first_menu == 0) {
                             map->game_pause = 0;
+                            playingforme();
                         }
                         break;
                     case SDLK_DOWN:

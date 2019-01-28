@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/home/sadegh/tank/src/logic.c" "/home/sadegh/tank/CMakeFiles/tank.dir/src/logic.c.o"
   "/home/sadegh/tank/src/physics.c" "/home/sadegh/tank/CMakeFiles/tank.dir/src/physics.c.o"
+  "/home/sadegh/tank/src/playwav.c" "/home/sadegh/tank/CMakeFiles/tank.dir/src/playwav.c.o"
   "/home/sadegh/tank/src/tank.c" "/home/sadegh/tank/CMakeFiles/tank.dir/src/tank.c.o"
   "/home/sadegh/tank/src/view.c" "/home/sadegh/tank/CMakeFiles/tank.dir/src/view.c.o"
   )
