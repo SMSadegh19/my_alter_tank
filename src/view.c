@@ -7,6 +7,7 @@
 #include "logic.h"
 #include "physics.h"
 #include "playwav.h"
+#include "saveandload.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -443,9 +444,11 @@ int event_handling(Map *map) {
                                 break;
                             case 1:
                                 if (map->first_menu) {
-                                    //for loading game
+                                    load_game(map);
+                                    map->first_menu = 0;
+                                    map->game_pause = 0;
                                 } else {
-                                    //for saving game
+                                    save_game(map);
                                 }
                                 break;
                             case 2:

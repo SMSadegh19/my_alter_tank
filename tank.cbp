@@ -88,6 +88,12 @@
 		<Unit filename="/home/sadegh/tank/src/playwav.h">
 			<Option target="tank"/>
 		</Unit>
+		<Unit filename="/home/sadegh/tank/src/saveandload.c">
+			<Option target="tank"/>
+		</Unit>
+		<Unit filename="/home/sadegh/tank/src/saveandload.h">
+			<Option target="tank"/>
+		</Unit>
 		<Unit filename="/home/sadegh/tank/src/structs.h">
 			<Option target="tank"/>
 		</Unit>

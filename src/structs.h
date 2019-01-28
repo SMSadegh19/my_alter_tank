@@ -42,7 +42,6 @@ typedef struct {
     int x;
     int y;
     int score;
-    int color[3];
     double angle;
     int is_alive;
     int powered_up;
@@ -51,6 +50,7 @@ typedef struct {
     int key_pressed[4];//0 : backward ** 1 : forward ** 2 : right_turn ** 3 : left_turn
     FragBomb fragBomb;
     Bullet bullet[6];
+    int color[3];
 } Tank;
 
 typedef struct {
@@ -64,12 +64,12 @@ typedef struct {
 typedef struct {
     int game_pause;
     int first_menu;
-    int number_of_walls;
-    long long int frames;
-    Powerup powerup[5];
-    Mine mine[15];
-    Tank tank[3];
-    Wall *walls;
+    int number_of_walls;//saved
+    long long int frames;//saved
+    Powerup powerup[5];//saved
+    Mine mine[15];//saved
+    Tank tank[3];//saved
+    Wall *walls;//saved
 } Map;
 
 #endif //TANK_STRUCTS_H

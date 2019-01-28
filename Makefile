@@ -204,6 +204,33 @@ src/playwav.c.s:
 	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/playwav.c.s
 .PHONY : src/playwav.c.s
 
+src/saveandload.o: src/saveandload.c.o
+
+.PHONY : src/saveandload.o
+
+# target to build an object file
+src/saveandload.c.o:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/saveandload.c.o
+.PHONY : src/saveandload.c.o
+
+src/saveandload.i: src/saveandload.c.i
+
+.PHONY : src/saveandload.i
+
+# target to preprocess a source file
+src/saveandload.c.i:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/saveandload.c.i
+.PHONY : src/saveandload.c.i
+
+src/saveandload.s: src/saveandload.c.s
+
+.PHONY : src/saveandload.s
+
+# target to generate assembly for a file
+src/saveandload.c.s:
+	$(MAKE) -f CMakeFiles/tank.dir/build.make CMakeFiles/tank.dir/src/saveandload.c.s
+.PHONY : src/saveandload.c.s
+
 src/tank.o: src/tank.c.o
 
 .PHONY : src/tank.o
@@ -276,6 +303,9 @@ help:
 	@echo "... src/playwav.o"
 	@echo "... src/playwav.i"
 	@echo "... src/playwav.s"
+	@echo "... src/saveandload.o"
+	@echo "... src/saveandload.i"
+	@echo "... src/saveandload.s"
 	@echo "... src/tank.o"
 	@echo "... src/tank.i"
 	@echo "... src/tank.s"
