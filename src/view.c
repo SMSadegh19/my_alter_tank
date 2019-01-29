@@ -19,6 +19,7 @@ const double pi = 3.14159265358979323846264338327950288419716939937510;
 int EXIT = 10000;
 int is_selected;
 int FPS;
+int NOS;//number of saves
 long long int time_passed_during_game;
 
 SDL_Window *window;
@@ -33,7 +34,7 @@ int g_msg;
 int b_msg;
 
 void initialize_game_values(Map *map) {
-    win_score = 5;
+    win_score = 20;
     is_selected = 0;
     map->frames = 0;
     map->game_pause = 1;
@@ -131,11 +132,15 @@ void quit_window() {
     SDL_Quit();
 }
 
-void draw_first_menu() {
+void draw_first_menu(Map *map) {
+    draw_dancing_lines(map, renderer);
     int first_y = 120;
-    draw_button("NEW GAME", x_max / 2, 1 * first_y, 200, 100, 0, 255);
-    draw_button("LOAD GAME", x_max / 2, 2 * first_y, 200, 100, 1, 255);
-    draw_button("QUIT", x_max / 2, 3 * first_y, 200, 100, 2, 255);
+    draw_button("NEW GAME", x_max / 2, 1.5 * first_y, 200, 100, 0, 255);
+    draw_button("LOAD GAME", x_max / 2, 2.5 * first_y, 200, 100, 1, 255);
+    draw_button("QUIT", x_max / 2, 3.5 * first_y, 200, 100, 2, 255);
+    SDL_RenderSetScale(renderer, 2.5, 2.5);
+    stringRGBA(renderer, 30, 10, "Use Up and Down keys and then Enter key to select!", 0, 0, 0, 255);
+    SDL_RenderSetScale(renderer, 1, 1);
 }
 
 void draw_background() {
@@ -316,11 +321,10 @@ int maximum(int a, int b) {
     }
 }
 
-void draw_results(Map *map) {
-    //dancing lines
+void draw_dancing_lines(Map *map, SDL_Renderer *sdl_renderer) {
     for (int i = 0; i < 30; ++i) {
         Line *line = &(map->lines[i]);
-        thickLineRGBA(renderer, line->x1, line->y1, line->x2, line->y2, 4, line->color[0] + rand() % 60, line->color[1] + rand() % 60, line->color[2] + rand() % 60, 255);
+        thickLineRGBA(sdl_renderer, line->x1, line->y1, line->x2, line->y2, 4, line->color[0] + rand() % 60, line->color[1] + rand() % 60, line->color[2] + rand() % 60, 255);
         //move lines
         line->x1 -= 4;line->x2 += 2;line->y1 += 2;line->y2 -= 4;
         line->x1 %= x_max;line->x2 %= x_max;
@@ -328,6 +332,11 @@ void draw_results(Map *map) {
         if (line->x1 < 0) {line->x1 = x_max;}
         if (line->y2 < 0) {line->y2 = y_max;}
     }
+}
+
+void draw_results(Map *map) {
+    //dancing lines
+    draw_dancing_lines(map, renderer);
     //score of tanks
     for (int i = 0; i < 3; ++i) {
         Tank *tank = &(map->tank[i]);
@@ -488,6 +497,7 @@ int event_handling(Map *map) {
                     case SDLK_RETURN:
                     case SDLK_KP_ENTER:
                         if (map->game_finished) {
+                            random_line_place(map);
                             map->game_finished = 0;
                             map->game_pause = 1;
                             map->first_menu = 1;
@@ -504,9 +514,16 @@ int event_handling(Map *map) {
                                 break;
                             case 1:
                                 if (map->first_menu) {
-                                    load_game(map);
-                                    map->first_menu = 0;
-                                    map->game_pause = 0;
+                                    NOS = number_of_saves();
+                                    if (NOS) {
+                                        int load_number = get_load_number(map, renderer);
+                                        if (load_number == EXIT) {
+                                            return EXIT;
+                                        }
+                                        load_game(map, load_number);//felan shomareh 1
+                                        map->first_menu = 0;
+                                        map->game_pause = 0;
+                                    }
                                 } else {
                                     save_game(map);
                                 }

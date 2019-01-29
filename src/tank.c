@@ -19,6 +19,7 @@ Map game_map;
 
 int main() {
     firsttime();///sound initializing
+    random_line_place(&game_map);
     game_map.walls = malloc(sizeof(Wall) * 100);
     initialize_game_values(&game_map);
     init_window();
@@ -33,7 +34,7 @@ int main() {
                 if (game_map.game_finished) {
                     draw_results(&game_map);
                 } else {
-                    draw_first_menu();
+                    draw_first_menu(&game_map);
                 }
             } else {
                 draw_shapes(&game_map);

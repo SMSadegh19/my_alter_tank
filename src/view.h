@@ -14,6 +14,7 @@ extern int EXIT;
 extern int tank_radius;
 extern int is_selected;
 extern int FPS;
+extern int NOS;
 extern long long int time_passed_during_game;
 extern int x_max;
 extern int y_max;
@@ -33,7 +34,7 @@ void draw_background();
 void draw_results(Map *map);
 void draw_shapes(Map *map);
 void draw_scores(Map *map);
-void draw_first_menu();
+void draw_first_menu(Map *map);
 void draw_button(char *string, int x, int y, int a, int b, int NUMBER, int alpha);
 void draw_game_menu();
 void draw_tank(Tank *tank);
@@ -44,7 +45,10 @@ void draw_wall(Wall *wall);
 void draw_powerup(Powerup *powerup);
 void draw_bomb(Bullet *bullet);
 void draw_mine(Mine *mine);
+void draw_dancing_lines(Map *map, SDL_Renderer *sdl_renderer);
 //Event handling
 int event_handling(Map *map);
+//helper
+char *convert_number_to_string(long long int number);
 
 #endif //TANK_VIEW_H

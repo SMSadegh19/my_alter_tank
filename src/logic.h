@@ -24,5 +24,7 @@ void kill_tank(Map *map, Tank *tank);
 void power_in_myplace(Tank *tank, Powerup *powerup);
 void get_powerup(Map *map, Tank *tank);
 void set_a_powerup(Map *map);
+//
+void random_line_place(Map *map);
 
 #endif //TANK_LOGIC_H
