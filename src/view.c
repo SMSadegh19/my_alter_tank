@@ -19,6 +19,7 @@ const double pi = 3.14159265358979323846264338327950288419716939937510;
 int EXIT = 10000;
 int is_selected;
 int FPS;
+long long int time_passed_during_game;
 
 SDL_Window *window;
 SDL_Renderer *renderer;
@@ -27,13 +28,19 @@ SDL_Surface *windowSurfae;
 int tank_radius = 18;
 int x_max = 11 * 100 + 50;
 int y_max = 6 * 100 + 100;
+int r_msg;
+int g_msg;
+int b_msg;
 
 void initialize_game_values(Map *map) {
+    win_score = 5;
     is_selected = 0;
     map->frames = 0;
     map->game_pause = 1;
     map->first_menu = 1;
+    map->game_finished = 0;
     srand((unsigned int)(time(NULL)));
+    r_msg = (rand() % 80) + 0; g_msg = (rand() % 80) + 80; b_msg = (rand() % 80) + 160;
     tanks_rand_place(map);
     for (int i = 0; i < 3; ++i) {
         map->tank[i].is_alive = 1;
@@ -239,7 +246,7 @@ void draw_powerup(Powerup *powerup) {
     }
 }
 
-char *convert_number_to_string(int number) {
+char *convert_number_to_string(long long int number) {
     char *mystring = malloc(100);
     if (number == 0) {
         mystring[0] = '0';
@@ -247,7 +254,7 @@ char *convert_number_to_string(int number) {
         return mystring;
     }
     int tedad_ragham = 0;
-    int x = number;
+    long long int x = number;
     while (x) {
         x /= 10;
         tedad_ragham++;
@@ -299,6 +306,51 @@ void draw_tank_gun(Tank *tank) {
     int x_gun = tank->x + (int) ((tank_radius + 3) * cos(tank->angle));
     int y_gun = tank->y + (int) ((tank_radius + 3) * sin(tank->angle));
     filledCircleRGBA(renderer, x_gun, y_gun, 5, 90, 90, 90, 255);
+}
+
+int maximum(int a, int b) {
+    if (a > b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
+void draw_results(Map *map) {
+    //dancing lines
+    for (int i = 0; i < 30; ++i) {
+        Line *line = &(map->lines[i]);
+        thickLineRGBA(renderer, line->x1, line->y1, line->x2, line->y2, 4, line->color[0] + rand() % 60, line->color[1] + rand() % 60, line->color[2] + rand() % 60, 255);
+        //move lines
+        line->x1 -= 4;line->x2 += 2;line->y1 += 2;line->y2 -= 4;
+        line->x1 %= x_max;line->x2 %= x_max;
+        line->y1 %= y_max;line->y2 %= y_max;
+        if (line->x1 < 0) {line->x1 = x_max;}
+        if (line->y2 < 0) {line->y2 = y_max;}
+    }
+    //score of tanks
+    for (int i = 0; i < 3; ++i) {
+        Tank *tank = &(map->tank[i]);
+        roundedBoxRGBA(renderer, x_max/2 - 200, y_max/2 - 200 + 150*i, x_max/2 + 200, y_max/2 - 100 + 150*i, 15, maximum(100, tank->color[0]), maximum(100, tank->color[1]), maximum(100, tank->color[2]), 255);
+        SDL_RenderSetScale(renderer, 3, 3);
+        stringRGBA(renderer, (x_max/2 - 150) / 3, (y_max/2 - 165 + 150*i) / 3, convert_number_to_string(tank->score), 0, 0, 0, 255);
+        if (tank->score == win_score) {
+            stringRGBA(renderer, (x_max/2 - 10) / 3, (y_max/2 - 165 + 150*i) / 3, "Winner!!", 0, 0, 0, 255);
+        }
+        SDL_RenderSetScale(renderer, 1, 1);
+    }
+    //passed time
+    roundedBoxRGBA(renderer, x_max/2 - 165, y_max/2 - 220 + 150*3, x_max/2 + 165, y_max/2 - 140 + 150*3, 15, 120, 120, 120, 255);
+    SDL_RenderSetScale(renderer, 3, 3);
+    stringRGBA(renderer, (x_max/2 - 275) / 3, (y_max/2 - 120 - 150*1) / 3, "Press enter to continue", r_msg, g_msg, b_msg, 255);
+    stringRGBA(renderer, (x_max/2 - 150) / 3, (y_max/2 - 192 + 150*3) / 3, "TIME:   m   s", 0, 0, 0, 255);
+    stringRGBA(renderer, (x_max/2 - 20) / 3, (y_max/2 - 192 + 150*3) / 3, convert_number_to_string(time_passed_during_game / 60), 0, 0, 0, 255);
+    stringRGBA(renderer, (x_max/2 + 80) / 3, (y_max/2 - 192 + 150*3) / 3, convert_number_to_string(time_passed_during_game % 60), 0, 0, 0, 255);
+    SDL_RenderSetScale(renderer, 1, 1);
+    //changing color
+    r_msg = (r_msg + rand() % 5) % 255;
+    g_msg = (g_msg + rand() % 5) % 255;
+    b_msg = (b_msg + rand() % 5) % 255;
 }
 
 int event_handling(Map *map) {
@@ -434,6 +486,14 @@ int event_handling(Map *map) {
                         }
                         break;
                     case SDLK_RETURN:
+                    case SDLK_KP_ENTER:
+                        if (map->game_finished) {
+                            map->game_finished = 0;
+                            map->game_pause = 1;
+                            map->first_menu = 1;
+                            is_selected = 0;
+                            break;
+                        }
                         switch (is_selected) {
                             case 0:
                                 if (map->first_menu) {

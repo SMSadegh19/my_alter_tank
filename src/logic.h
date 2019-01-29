@@ -8,6 +8,8 @@
 #ifndef TANK_LOGIC_H
 #define TANK_LOGIC_H
 
+extern int win_score;
+
 void generate_map(Map *map);
 int exist_0_vertex();
 int tank_movement_collid(Map *map, int temp_x, int temp_y);

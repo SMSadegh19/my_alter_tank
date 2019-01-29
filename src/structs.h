@@ -62,14 +62,24 @@ typedef struct {
 } Wall;
 
 typedef struct {
+    int x1;
+    int y1;
+    int x2;
+    int y2;
+    int color[3];
+} Line;
+
+typedef struct {
     int game_pause;
     int first_menu;
+    int game_finished;
     int number_of_walls;//saved
     long long int frames;//saved
     Powerup powerup[5];//saved
     Mine mine[15];//saved
     Tank tank[3];//saved
     Wall *walls;//saved
+    Line lines[30];
 } Map;
 
 #endif //TANK_STRUCTS_H

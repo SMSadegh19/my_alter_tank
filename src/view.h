@@ -14,6 +14,9 @@ extern int EXIT;
 extern int tank_radius;
 extern int is_selected;
 extern int FPS;
+extern long long int time_passed_during_game;
+extern int x_max;
+extern int y_max;
 
 //initializing functions
 void initialize_game_values(Map *map);
@@ -27,6 +30,7 @@ void present_window();
 void quit_window();
 //Drawings
 void draw_background();
+void draw_results(Map *map);
 void draw_shapes(Map *map);
 void draw_scores(Map *map);
 void draw_first_menu();

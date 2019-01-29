@@ -17,6 +17,7 @@
 int vertex[12][7];
 int dx[4] = {0, 0, 1, -1};
 int dy[4] = {1, -1, 0, 0};
+int win_score;
 
 int exist_0_vertex() {
     int exist = 0;
@@ -180,10 +181,31 @@ int tank_movement_collid(Map *map, int temp_x, int temp_y) {
     return 0;
 }
 
+void random_line_place(Map *map) {
+    srand((unsigned int)(time(NULL)));
+    for (int i = 0; i < 30; ++i) {
+        Line *line = &(map->lines[i]);
+        line->x1 = rand() % x_max;
+        line->y1 = rand() % y_max;
+        line->x2 = rand() % x_max;
+        line->y2 = rand() % y_max;
+        for (int j = 0; j < 3; ++j) {
+            line->color[j] = (rand() % 5) * 45;
+        }
+    }
+}
+
 void add_score(Map *map) {
     for (int i = 0; i < 3; ++i) {
         if (map->tank[i].is_alive) {
             map->tank[i].score++;
+        }
+        if (map->tank[i].score == win_score) {
+            map->game_finished = 1;
+            map->game_pause = 1;
+            map->first_menu = 1;
+            time_passed_during_game = map->frames / FPS;
+            random_line_place(map);
         }
     }
 }

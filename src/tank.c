@@ -18,6 +18,7 @@
 Map game_map;
 
 int main() {
+    firsttime();///sound initializing
     game_map.walls = malloc(sizeof(Wall) * 100);
     initialize_game_values(&game_map);
     init_window();
@@ -29,13 +30,16 @@ int main() {
             bullets_moving(&game_map);
         } else {
             if (game_map.first_menu) {
-                draw_first_menu();
+                if (game_map.game_finished) {
+                    draw_results(&game_map);
+                } else {
+                    draw_first_menu();
+                }
             } else {
                 draw_shapes(&game_map);
                 draw_game_menu();
             }
         }
-        if (event_handling(&game_map) == EXIT) break;
         if (game_map.game_pause == 0) {
             mine_features_controlling(&game_map);
             game_map.frames++;
@@ -43,6 +47,7 @@ int main() {
                 set_a_powerup(&game_map);
             }
         }
+        if (event_handling(&game_map) == EXIT) break;
         present_window();
     }
     quit_window();

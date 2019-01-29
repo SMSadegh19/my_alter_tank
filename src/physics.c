@@ -153,6 +153,7 @@ void fire(Tank *tank, Map *map) {
         tank->frag_section = 2;
         return;
     }
+    playingforme();
     for (int i = 0; i < 6; ++i) {
         if (tank->bullet[i].is_fired == 0) {
             //initializing bullet

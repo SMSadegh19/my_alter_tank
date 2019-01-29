@@ -26,6 +26,12 @@ string.h
 SDL2/SDL.h
 -
 
+/home/sadegh/tank/src/saveandload.h
+structs.h
+/home/sadegh/tank/src/structs.h
+stdio.h
+-
+
 /home/sadegh/tank/src/structs.h
 
 /home/sadegh/tank/src/view.c
@@ -39,6 +45,8 @@ physics.h
 /home/sadegh/tank/src/physics.h
 playwav.h
 /home/sadegh/tank/src/playwav.h
+saveandload.h
+/home/sadegh/tank/src/saveandload.h
 stdio.h
 -
 stdlib.h

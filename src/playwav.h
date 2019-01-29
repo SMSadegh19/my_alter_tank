@@ -9,6 +9,7 @@
 #ifndef TANK_PLAYWAV_H
 #define TANK_PLAYWAV_H
 
+void firsttime();
 int playingforme();
 
 #endif //TANK_PLAYWAV_H

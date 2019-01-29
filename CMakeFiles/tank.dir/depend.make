@@ -34,9 +34,14 @@ CMakeFiles/tank.dir/src/playwav.c.o: /usr/include/SDL2/SDL_thread.h
 CMakeFiles/tank.dir/src/playwav.c.o: /usr/include/SDL2/begin_code.h
 CMakeFiles/tank.dir/src/playwav.c.o: /usr/include/SDL2/close_code.h
 
+CMakeFiles/tank.dir/src/saveandload.c.o: src/saveandload.c
+CMakeFiles/tank.dir/src/saveandload.c.o: src/saveandload.h
+CMakeFiles/tank.dir/src/saveandload.c.o: src/structs.h
+
 CMakeFiles/tank.dir/src/tank.c.o: src/logic.h
 CMakeFiles/tank.dir/src/tank.c.o: src/physics.h
 CMakeFiles/tank.dir/src/tank.c.o: src/playwav.h
+CMakeFiles/tank.dir/src/tank.c.o: src/saveandload.h
 CMakeFiles/tank.dir/src/tank.c.o: src/structs.h
 CMakeFiles/tank.dir/src/tank.c.o: src/tank.c
 CMakeFiles/tank.dir/src/tank.c.o: src/view.h
@@ -56,6 +61,7 @@ CMakeFiles/tank.dir/src/tank.c.o: /usr/include/SDL2/close_code.h
 CMakeFiles/tank.dir/src/view.c.o: src/logic.h
 CMakeFiles/tank.dir/src/view.c.o: src/physics.h
 CMakeFiles/tank.dir/src/view.c.o: src/playwav.h
+CMakeFiles/tank.dir/src/view.c.o: src/saveandload.h
 CMakeFiles/tank.dir/src/view.c.o: src/structs.h
 CMakeFiles/tank.dir/src/view.c.o: src/view.c
 CMakeFiles/tank.dir/src/view.c.o: src/view.h
