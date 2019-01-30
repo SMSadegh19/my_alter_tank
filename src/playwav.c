@@ -15,7 +15,7 @@
 #include "logic.h"
 #include "playwav.h"
 
-#define MUS_PATH "khooz.wav"
+#define MUS_PATH "uncharted.wav"
 #define MUS_PATH2 "hello.wav"
 
 
@@ -44,28 +44,28 @@ static Uint32 audio_len2; // remaining length of the sample we have to play
 ** PLAYING A SOUND IS MUCH MORE COMPLICATED THAN IT SHOULD BE
 */
 void firsttime() {
-//    if( SDL_LoadWAV(MUS_PATH, &wav_spec, &wav_buffer, &wav_length) == NULL ){
-//        return 1;
-//    }
-    if( SDL_LoadWAV(MUS_PATH2, &wav_spec2, &wav_buffer2, &wav_length2) == NULL ){
-        return;
+    if( SDL_LoadWAV(MUS_PATH, &wav_spec, &wav_buffer, &wav_length) == NULL ){
+        return 1;
     }
-//    wav_spec.callback = my_audio_callback;
-//    wav_spec.userdata = NULL;
-    wav_spec2.callback = my_audio_callback2;
-    wav_spec2.userdata = NULL;
-//    audio_pos = wav_buffer; // copy sound buffer
-//    audio_len = wav_length; // copy file length
-//    if ( SDL_OpenAudio(&wav_spec, NULL) < 0 ){
-//        fprintf(stderr, "Couldn't open audio: %s\n", SDL_GetError());
-//        exit(-1);
+//    if( SDL_LoadWAV(MUS_PATH2, &wav_spec2, &wav_buffer2, &wav_length2) == NULL ){
+//        return;
 //    }
-//    SDL_PauseAudio(0);
-
-    if ( SDL_OpenAudio(&wav_spec2, NULL) < 0 ){
+    wav_spec.callback = my_audio_callback;
+    wav_spec.userdata = NULL;
+//    wav_spec2.callback = my_audio_callback2;
+//    wav_spec2.userdata = NULL;
+    audio_pos = wav_buffer; // copy sound buffer
+    audio_len = wav_length; // copy file length
+    if ( SDL_OpenAudio(&wav_spec, NULL) < 0 ){
         fprintf(stderr, "Couldn't open audio: %s\n", SDL_GetError());
         exit(-1);
     }
+    SDL_PauseAudio(0);
+
+//    if ( SDL_OpenAudio(&wav_spec2, NULL) < 0 ){
+//        fprintf(stderr, "Couldn't open audio: %s\n", SDL_GetError());
+//        exit(-1);
+//    }
 }
 
 int playingforme(){
@@ -139,7 +139,7 @@ void my_audio_callback2(void *userdata, Uint8 *stream, int len) {
 
     len = ( len > audio_len2 ? audio_len2 : len );
     SDL_memcpy(stream, audio_pos2, len); 					// simply copy from one buffer into the other
-//    SDL_MixAudio(stream, audio_pos2, len, SDL_MIX_MAXVOLUME);// mix from one buffer into another
+    SDL_MixAudio(stream, audio_pos2, len, SDL_MIX_MAXVOLUME);// mix from one buffer into another
 
     audio_pos2 += len;
     audio_len2 -= len;

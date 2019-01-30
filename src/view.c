@@ -482,7 +482,7 @@ int event_handling(Map *map) {
                     case SDLK_ESCAPE:
                         if (map->first_menu == 0) {
                             map->game_pause = 0;
-                            playingforme();
+//                            playingforme();
                         }
                         break;
                     case SDLK_DOWN:

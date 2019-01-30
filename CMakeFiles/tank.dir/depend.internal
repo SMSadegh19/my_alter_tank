@@ -35,9 +35,11 @@ CMakeFiles/tank.dir/src/playwav.c.o
  /usr/include/SDL2/begin_code.h
  /usr/include/SDL2/close_code.h
 CMakeFiles/tank.dir/src/saveandload.c.o
+ /home/sadegh/tank/src/logic.h
  /home/sadegh/tank/src/saveandload.c
  /home/sadegh/tank/src/saveandload.h
  /home/sadegh/tank/src/structs.h
+ /home/sadegh/tank/src/view.h
 CMakeFiles/tank.dir/src/tank.c.o
  /home/sadegh/tank/src/logic.h
  /home/sadegh/tank/src/physics.h
