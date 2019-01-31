@@ -14,11 +14,6 @@
     <list default="true" id="16a4a011-d161-4100-8340-fc3cd78f6eb8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/tank.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/tank.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/tank.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/tank.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/tank.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/tank.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/tank.dir/src/tank.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/tank.dir/src/tank.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/physics.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/physics.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playwav.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/playwav.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/view.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tank" beforeDir="false" afterPath="$PROJECT_DIR$/tank" afterDir="false" />
     </list>
@@ -35,7 +30,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tank.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
+            <state relative-caret-position="399">
               <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
               <folding>
                 <element signature="e#41#59#0" expanded="true" />
@@ -47,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8626">
-              <caret line="484" column="37" selection-start-line="484" selection-start-column="37" selection-end-line="484" selection-end-column="37" />
+            <state relative-caret-position="152">
+              <caret line="38" column="11" lean-forward="true" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
               <folding>
                 <element signature="e#41#58#0" expanded="true" />
               </folding>
@@ -83,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/playwav.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
+            <state relative-caret-position="2698">
+              <caret line="142" selection-start-line="142" selection-end-line="142" />
               <folding>
                 <element signature="e#40#58#0" expanded="true" />
               </folding>
@@ -202,9 +197,9 @@
         <option value="$PROJECT_DIR$/src/saveandload.c" />
         <option value="$PROJECT_DIR$/src/view.h" />
         <option value="$PROJECT_DIR$/src/tank.c" />
-        <option value="$PROJECT_DIR$/src/view.c" />
         <option value="$PROJECT_DIR$/src/physics.c" />
         <option value="$PROJECT_DIR$/src/playwav.c" />
+        <option value="$PROJECT_DIR$/src/view.c" />
       </list>
     </option>
   </component>
@@ -317,7 +312,8 @@
       <workItem from="1548786635677" duration="259000" />
       <workItem from="1548788035063" duration="161000" />
       <workItem from="1548832807214" duration="1864000" />
-      <workItem from="1548847907537" duration="512000" />
+      <workItem from="1548847907537" duration="2738000" />
+      <workItem from="1548946574452" duration="329000" />
     </task>
     <task id="LOCAL-00001" summary="I wrote some function names">
       <created>1545303134244</created>
@@ -592,11 +588,18 @@
       <option name="project" value="LOCAL" />
       <updated>1548781063918</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Song added to the game">
+      <created>1548848481322</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1548848481322</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202285000" />
+    <option name="totallyTimeSpent" value="204840000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -609,8 +612,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1373" height="785" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.360211" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.36623964" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -698,7 +702,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="A little change in map generation" />
     <MESSAGE value="Tanks first x, y is ok and not on the walls" />
     <MESSAGE value="Hoora!!!! Now TANKs can't pass vertexes" />
     <MESSAGE value="I added a feature to Wall struct to know it is vertical or horizontal. at the time of map generation we know v or h wall." />
@@ -723,7 +726,8 @@
     <MESSAGE value="saving and loading game added but one file - some files later" />
     <MESSAGE value="I added winning page and its graphic." />
     <MESSAGE value="Now you can SAVE and LOAD game. (multiple save and load)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now you can SAVE and LOAD game. (multiple save and load)" />
+    <MESSAGE value="Song added to the game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Song added to the game" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/view.h" />
@@ -803,6 +807,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/tank.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding>
+            <element signature="e#41#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/view.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
@@ -819,6 +833,16 @@
           <caret line="159" column="29" selection-start-line="159" selection-start-column="29" selection-end-line="159" selection-end-column="29" />
           <folding>
             <element signature="e#41#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/playwav.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2698">
+          <caret line="142" selection-start-line="142" selection-end-line="142" />
+          <folding>
+            <element signature="e#40#58#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -867,30 +891,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tank.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
-          <folding>
-            <element signature="e#41#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/playwav.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
-          <folding>
-            <element signature="e#40#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8626">
-          <caret line="484" column="37" selection-start-line="484" selection-start-column="37" selection-end-line="484" selection-end-column="37" />
+        <state relative-caret-position="152">
+          <caret line="38" column="11" lean-forward="true" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
           <folding>
             <element signature="e#41#58#0" expanded="true" />
           </folding>

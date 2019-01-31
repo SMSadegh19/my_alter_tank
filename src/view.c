@@ -109,7 +109,7 @@ void powerup_rand_place(Powerup *powerup) {
 void init_window() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
         return;
-    window = SDL_CreateWindow("SDL_RenderClear",
+    window = SDL_CreateWindow("AlterTank",
                               SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                               x_max, y_max,
                               SDL_WINDOW_OPENGL);
