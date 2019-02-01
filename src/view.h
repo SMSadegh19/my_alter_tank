@@ -15,6 +15,7 @@ extern int tank_radius;
 extern int is_selected;
 extern int FPS;
 extern int NOS;
+extern int audio_frames;
 extern long long int time_passed_during_game;
 extern int x_max;
 extern int y_max;

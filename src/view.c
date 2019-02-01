@@ -20,6 +20,7 @@ int EXIT = 10000;
 int is_selected;
 int FPS;
 int NOS;//number of saves
+int audio_frames;
 long long int time_passed_during_game;
 
 SDL_Window *window;
@@ -122,6 +123,10 @@ void render_clear() {
 }
 
 void present_window() {
+    audio_frames++;
+    if (audio_frames % 5445 == 0) {
+        firsttime();
+    }
     SDL_RenderPresent(renderer);
 //    SDL_UpdateWindowSurface(window);
 //    SDL_BlitSurface(imageSurface, NULL, windowSurfae, NULL);

@@ -19,6 +19,7 @@ Map game_map;
 
 int main() {
     firsttime();///sound initializing
+    audio_frames = 1;
     random_line_place(&game_map);
     game_map.walls = malloc(sizeof(Wall) * 100);
     initialize_game_values(&game_map);
